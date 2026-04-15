@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @theme {
-    -font-display: "Urbanist",sans-serif;
-    -breakpoint-3xl: 1920px;
-    -color-primary: #8DFF69;
+    --font-display: "Urbanist",sans-serif;
+    --breakpoint-3xl: 1920px;
+    --color-primary: #8DFF69;
 }
 
 @layer base {
@@ -19,9 +23,5 @@
         overflow-x: hidden;
     }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 
