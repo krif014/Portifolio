@@ -5,6 +5,13 @@
     -color-primary: #8DFF69;
 }
 
+@layer base {
+    html {
+        font-family: var(--font-display);
+        scroll-behavior: smooth;
+    }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
