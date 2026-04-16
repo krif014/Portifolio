@@ -48,8 +48,16 @@
   scrollbar-color: #6FE047  #0a0a0a;
 
   }
+ 
+  /* Hide Scrollbar for Carousel */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+     scrollbar-width: none;
+  }
 
-  
+   .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+   }
 
 }
 
