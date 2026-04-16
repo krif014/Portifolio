@@ -1,12 +1,12 @@
 import React from 'react'
 
-const FadeIn = () => {
+const ScrollReveal = () => {
     return (
         <div>
-            FadeIn
+            ScrollReveal
         </div>
     )    
 
 }
 
-export default FadeIn
+export default ScrollReveal
