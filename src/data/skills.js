@@ -47,5 +47,40 @@ export const skills = [
         icon: 'GitBranch',
         level: 'Advanced',
         experience: '3+ years'
+    },
+    {
+        id: 8,
+        name: 'TypeScript',
+        icon: 'FileCode',
+        level: 'Intermediate',
+        experience: '2+ years'
+    },
+    {
+        id: 9,
+        name: 'Express.js',
+        icon: 'ServerCog',
+        level: 'Advanced',
+        experience: '2+ years'
+    },
+    {
+        id: 10,
+        name: 'REST APIs',
+        icon: 'Link',
+        level: 'Advanced',
+        experience: '3+ years'
+    },
+    {
+        id: 11,
+        name: 'UI/UX Design',
+        icon: 'Layout',
+        level: 'Intermediate',
+        experience: '2+ years'
+    },
+    {
+        id: 12,
+        name: 'Firebase',
+        icon: 'Flame',
+        level: 'Intermediate',
+        experience: '2+ years'
     }
 ]
