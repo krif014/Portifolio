@@ -1,12 +1,9 @@
-import React from 'react'
+import ScrollReveal from "./ScrollReveal";
 
-const FadeIn = () => {
-    return (
-        <div>
-            FadeIn
-        </div>
-    )    
-
+export default function FadeIn({ children, className = "", delayMs = 0 }) {
+  return (
+    <ScrollReveal className={className} delayMs={delayMs} y={10}>
+      {children}
+    </ScrollReveal>
+  );
 }
-
-export default FadeIn
