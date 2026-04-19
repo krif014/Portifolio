@@ -1,44 +1,50 @@
 export const services = [
-    {
-        id: 1,
-        icon: 'Layout',
-        title: 'Frontend Development',
-        description: 'Modern frontend development focused on building fast, responsive, and user-friendly interfaces. Leveraging React, Next.js, and modern JavaScript to create dynamic and scalable web applications. Emphasizes performance, clean architecture, and seamless user experiences.'
-    },
-    {
-        id: 2,
-        icon: 'Server',
-        title: 'Backend Development',
-        description: 'Robust backend development for building secure, scalable, and high-performance systems. Utilizing Node.js, Express, and modern databases to manage data and APIs efficiently. Ensures reliability, security, and seamless integration with frontend applications.'
-    },
-    {
-        id: 3,
-        icon: 'Globe',
-        title: 'Full Stack Development',
-        description: 'End-to-end development covering both frontend and backend systems. Combines modern frameworks and technologies to build complete web applications. Focused on scalability, performance, and seamless user experience across all layers.'
-    },
-    {
-        id: 4,
-        icon: 'Smartphone',
-        title: 'Responsive Web Design',
-        description: 'Designing websites that adapt perfectly to all screen sizes and devices. Ensures a consistent and engaging user experience on mobile, tablet, and desktop. Focused on usability, accessibility, and modern UI/UX principles.'
-    },
-    {
-        id: 5,
-        icon: 'Database',
-        title: 'Database Management',
-        description: 'Efficient handling and structuring of data using modern database technologies. Focuses on performance optimization, data security, and scalability. Ensures smooth data flow and reliable storage for applications.'
-    },
-    {
-        id: 6,
-        icon: 'Cloud',
-        title: 'Cloud Deployment',
-        description: 'Deploying and managing applications on modern cloud platforms. Ensures scalability, reliability, and fast performance for users worldwide. Supports continuous integration and seamless updates.'
-    },
-    {
-        id: 7,
-        icon: 'Shield',
-        title: 'Web Security',
-        description: 'Implementing best practices to protect applications from vulnerabilities and attacks. Focuses on data protection, authentication, and secure communication. Ensures safe and trusted user experiences.'
-    }
-]
+  {
+    id: 1,
+    icon: "layout",
+    title: "Frontend Development",
+    description:
+      "Building responsive and performant web applications using React, Next.js, and modern JavaScript frameworks with pixel-perfect designs.",
+    large: true,
+  },
+  {
+    id: 2,
+    icon: "smartphone",
+    title: "Responsive Design",
+    description:
+      "Creating mobile-first, responsive interfaces that work seamlessly across all devices and screen sizes with exceptional user experience.",
+    large: true,
+  },
+  {
+    id: 3,
+    icon: "palette",
+    title: "UI/UX Design",
+    description:
+      "User-centered interfaces, flows, and prototypes that balance clarity, brand, and conversion.",
+    large: false,
+  },
+  {
+    id: 4,
+    icon: "code",
+    title: "Custom Components",
+    description:
+      "Accessible, documented component libraries that speed up delivery and keep design systems consistent.",
+    large: false,
+  },
+  {
+    id: 5,
+    icon: "zap",
+    title: "Performance Optimization",
+    description:
+      "Core Web Vitals, bundle sizing, caching, and runtime tuning so experiences feel instant at scale.",
+    large: false,
+  },
+  {
+    id: 6,
+    icon: "stethoscope",
+    title: "Code Review & Consulting",
+    description:
+      "Architecture reviews, mentoring, and pragmatic recommendations for teams shipping web products.",
+    large: false,
+  },
+];
