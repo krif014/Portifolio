@@ -62,17 +62,24 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto h-[80px] flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <button
-          type="button"
-          onClick={() => scrollTo("about")}
-          className="flex items-center gap-2 text-accent transition hover:opacity-90"
-        >
-          <Code2 className="h-6 w-6 shrink-0" strokeWidth={2.25} />
-          <span className="text-lg font-bold tracking-tight text-accent">
-            Krif
-          </span>
-        </button>
+  type="button"
+  onClick={() => scrollTo("about")}
+  className="flex items-center gap-2 group transition-all duration-200 ease-in-out transform hover:scale-[1.09] "
+>
+  {/* ICON */}
+  <Code2 className="h-8 w-8 text-white " />
+
+  {/* TEXT */}
+  <span
+    className="text-[29px] font-bold tracking-tight
+    bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_50%)]
+    bg-clip-text text-transparent"
+  >
+    Krif
+  </span>
+</button>
 
         <div className="hidden items-center gap-10 md:flex">
           {LINKS.map(({ id, label }) => (
@@ -80,10 +87,10 @@ export default function Navbar() {
               key={id}
               type="button"
               onClick={() => scrollTo(id)}
-              className={`relative text-sm font-medium transition ${
+              className={`relative text-base font-medium transition ${
                 active === id
                   ? "text-white"
-                  : "text-zinc-400 hover:text-zinc-100"
+                  : "text-zinc-400 hover:text-white"
               }`}
             >
               {label}
@@ -133,7 +140,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-4 py-4">
             <div className="flex items-center gap-2 text-accent">
               <Code2 className="h-5 w-5" />
-              <span className="text-base font-bold">Krif</span>
+              <span className="text-3xl font-bold">Krif</span>
             </div>
             <button
               type="button"
