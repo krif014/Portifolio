@@ -15,7 +15,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        quicksand: ['Urbanist', 'sans-serif'],
       },
       boxShadow: {
         glow: "0 0 40px rgba(74, 222, 128, 0.12)",
