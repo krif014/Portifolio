@@ -83,21 +83,23 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-10 md:flex">
           {LINKS.map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => scrollTo(id)}
-              className={`relative text-base font-medium transition ${
-                active === id
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              {label}
-              {active === id ? (
-                <span className="absolute -bottom-1 left-0 right-0 h-px bg-white/80" />
-              ) : null}
-            </button>
+           <button
+  key={id}
+  type="button"
+  onClick={() => scrollTo(id)}
+  className={`relative group text-base font-medium transition-colors duration-200 ${
+    active === id
+      ? "text-white"
+      : "text-zinc-400 hover:text-white"
+  }`}
+>
+  {label}
+
+  <span
+    className={`absolute -bottom-1 left-0 h-px w-full origin-left transform transition-transform duration-300 ease-out
+      ${active === id ? "scale-x-100 bg-white" : "scale-x-0 bg-white group-hover:scale-x-100"}`}
+  />
+</button>
           ))}
         </div>
 
