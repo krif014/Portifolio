@@ -70,7 +70,7 @@ export default function Navbar() {
         >
           <Code2 className="h-6 w-6 shrink-0" strokeWidth={2.25} />
           <span className="text-lg font-bold tracking-tight text-accent">
-            Alex
+            Krif
           </span>
         </button>
 
@@ -133,7 +133,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-4 py-4">
             <div className="flex items-center gap-2 text-accent">
               <Code2 className="h-5 w-5" />
-              <span className="text-base font-bold">Alex</span>
+              <span className="text-base font-bold">Krif</span>
             </div>
             <button
               type="button"

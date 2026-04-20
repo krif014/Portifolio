@@ -7,7 +7,7 @@ export const testimonials = [
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=560&h=720&fit=crop&q=80",
     quote:
-      "Outstanding work on our React application. Alex delivered a high-performance, scalable solution that exceeded our expectations. The attention to detail and code quality was exceptional.",
+      "Outstanding work on our React application. Krif delivered a high-performance, scalable solution that exceeded our expectations. The attention to detail and code quality was exceptional.",
     rating: 5,
     badge: { value: "3x", label: "Faster Delivery" },
   },
@@ -19,7 +19,7 @@ export const testimonials = [
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=560&h=720&fit=crop&q=80",
     quote:
-      "Alex transformed our vision into reality with a stunning, user-friendly interface. The project was delivered on time and the communication throughout was excellent. A true professional!",
+      "Krif transformed our vision into reality with a stunning, user-friendly interface. The project was delivered on time and the communication throughout was excellent. A true professional!",
     rating: 5,
     badge: { value: "100%", label: "On-Time Delivery" },
   },

@@ -22,7 +22,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 text-accent">
               <Code2 className="h-7 w-7" strokeWidth={2.25} />
-              <span className="text-2xl font-bold text-accent">Alex</span>
+              <span className="text-2xl font-bold text-accent">Krif</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400">
               Crafting seamless digital experiences with modern web
@@ -30,11 +30,11 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <a
-                href="mailto:alex@timetoprogram.com"
+                href="mailto:Krif@timetoprogram.com"
                 className="flex items-center gap-3 rounded-2xl border border-white/10 bg-surface px-4 py-3 transition hover:border-accent/40 hover:shadow-glow"
               >
                 <Mail className="h-5 w-5 text-accent" />
-                <span className="text-sm text-white">alex@timetoprogram.com</span>
+                <span className="text-sm text-white">Krif@timetoprogram.com</span>
               </a>
               <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-surface px-4 py-3">
                 <MapPin className="h-5 w-5 text-accent" />
@@ -98,7 +98,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-zinc-500 sm:flex-row">
-            <p>© {new Date().getFullYear()} Alex Johnson. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Krif Johnson. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               Built with{" "}
               <Heart className="inline h-3.5 w-3.5 animate-pulse fill-accent text-accent" />{" "}
