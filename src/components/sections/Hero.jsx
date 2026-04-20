@@ -51,13 +51,13 @@ export default function Hero() {
               <Star className="h-3.5 w-3.5 fill-accent text-accent" />
             </div>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               React.js Developer
               <br />
               Portfolio
             </h1>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-lg">
               Building modern, scalable web applications with React, JavaScript,
               and cutting-edge technologies. Transforming ideas into exceptional
               digital experiences.
