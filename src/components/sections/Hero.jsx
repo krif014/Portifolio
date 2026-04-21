@@ -66,7 +66,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={scrollToContact}
-                className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-black shadow-glow transition hover:bg-zinc-100"
+                className="inline-flex items-center justify-center rounded-[12px] bg-white px-7 py-3 text-sm font-semibold text-black shadow-glow transition hover:bg-zinc-100"
               >
                 Get in Touch
               </button>
@@ -87,7 +87,7 @@ export default function Hero() {
               <div className="relative h-full w-full rounded-[2rem] border border-white/10 bg-black/30 p-4 backdrop-blur">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
                   <img
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=900&fit=crop&q=80"
+                    src="images\developer-potrait.jpeg"
                     alt=""
                     className="h-full w-full object-cover"
                   />
