@@ -107,7 +107,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => scrollTo("contact")}
-            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-glow transition hover:bg-zinc-100 md:inline-flex"
+            className="hidden transition-1 duration-100 ease-in-out rounded-[12px] bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-glow transition hover:bg-accent md:inline-flex"
           >
             Hire Me
           </button>
@@ -175,7 +175,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => scrollTo("contact")}
-              className="mt-4 w-full rounded-full bg-white py-3 text-sm font-semibold text-black"
+              className="mt-4 w-full  bg-white py-3 text-sm font-semibold text-black"
             >
               Hire Me
             </button>
