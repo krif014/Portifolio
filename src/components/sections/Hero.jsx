@@ -50,7 +50,7 @@ export default function Hero() {
               FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali,RW 
             </div>
 
-            <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-[58px]">
               Aspiring Developer
               <br />
               Portfolio
