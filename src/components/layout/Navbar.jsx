@@ -58,7 +58,7 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition ${
         scrolled
-          ? "border-b border-white/10 bg-black/60 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-black/60 backdrop-blur-xl "
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -122,66 +122,47 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div
-        className={`md:hidden ${
-          open ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-      >
-        <div
-          className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setOpen(false)}
-          aria-hidden
-        />
-        <div
-          className={`fixed right-0 top-0 z-50 h-dvh w-[84%] max-w-sm border-l border-white/10 bg-black/85 backdrop-blur-xl transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex items-center justify-between px-4 py-4">
-            <div className="flex items-center gap-2 text-accent">
-              <Code2 className="h-5 w-5" />
-              <span className="text-3xl font-bold">Krif</span>
-            </div>
-            <button
-              type="button"
-              className="rounded-lg p-2 text-zinc-200"
-              aria-label="Close menu"
-              onClick={() => setOpen(false)}
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
+      <div className="md:hidden">
+  {/* Overlay */}
+  <div
+    className={`fixed inset-0 top-[80px] z-40 bg-black/60 backdrop-blur-sm transition ${
+      open ? "opacity-100" : "opacity-0 pointer-events-none"
+    }`}
+    onClick={() => setOpen(false)}
+  />
 
-          <div className="px-4 py-3">
-            <div className="flex flex-col gap-1">
-              {LINKS.map(({ id, label }) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => scrollTo(id)}
-                  className={`rounded-xl px-4 py-3 text-left text-sm font-medium transition ${
-                    active === id
-                      ? "bg-white/10 text-white"
-                      : "text-zinc-300 hover:bg-white/5"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => scrollTo("contact")}
-              className="mt-4 w-full  bg-white py-3 text-sm font-semibold text-black"
-            >
-              Hire Me
-            </button>
-          </div>
-        </div>
+  {/* Dropdown */}
+  <div
+    className={`fixed left-0 top-[80px] z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl transition-all duration-300 ${
+      open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
+    }`}
+  >
+    <div className="px-4 py-4">
+      <div className="flex flex-col gap-1">
+        {LINKS.map(({ id, label }) => (
+          <button
+            key={id}
+            onClick={() => scrollTo(id)}
+            className={`rounded-xl px-4 py-3 text-left text-sm font-medium transition ${
+              active === id
+                ? "bg-white/10 text-white"
+                : "text-zinc-300 hover:bg-white/5 hover:text-white"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
       </div>
+
+      <button
+        onClick={() => scrollTo("contact")}
+        className="mt-4 w-full rounded-[12px] bg-white py-3 text-sm font-semibold text-black transition hover:bg-accent"
+      >
+        Hire Me
+      </button>
+    </div>
+  </div>
+</div>
     </header>
   );
 }
