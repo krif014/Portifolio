@@ -92,11 +92,6 @@ export default function Hero() {
                     className="h-full w-full object-cover"
                   />
 
-                  <div className="pointer-events-none absolute inset-0">
-                    <div className="absolute inset-0 rounded-[1.5rem] ring-1 ring-white/10" />
-                    <div className="absolute -inset-4 animate-spin-slow rounded-[2rem] bg-[conic-gradient(from_180deg_at_50%_50%,rgba(74,222,128,0.0),rgba(74,222,128,0.55),rgba(74,222,128,0.0))] blur-[1px]" />
-                  </div>
-
                   <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black/55 px-4 py-2.5 text-accent backdrop-blur">
                     {[
                       { Icon: SiReact, label: "React" },
