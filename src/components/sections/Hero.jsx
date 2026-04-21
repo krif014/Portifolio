@@ -45,14 +45,13 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent">
-              <Code2 className="h-3.5 w-3.5" />
-              React Developer &amp; UI/UX Enthusiast | Based in San Francisco, CA
-              <Star className="h-3.5 w-3.5 fill-accent text-accent" />
+            <div className="flex content-center text-[14px] items-center gap-2 rounded-full border border-accent/40 bg-accent/5 h-[40px]   w-[490px] pl-[38px] py-1.5 text-xs font-medium text-white">
+              <Star className="h-3.5 w-3.5 fill-white text-white" />
+              FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali,RW 
             </div>
 
             <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              React.js Developer
+              Aspiring Developer
               <br />
               Portfolio
             </h1>
