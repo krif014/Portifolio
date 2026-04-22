@@ -80,39 +80,21 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-[520px]">
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-accent/40 via-transparent to-emerald-900/30 blur-2xl" />
-
-              <div className="relative h-full w-full rounded-[2rem] border border-white/10 bg-black/30 p-4 backdrop-blur">
-                <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
+          <div className="relative mx-auto  max-w-xl lg:max-w-none"> 
                   <img
-                    src="images\developer-potrait.jpeg"
+                    src="images\DEV.webp"
                     alt=""
-                    className="h-full w-full object-cover"
+                    className="h-[530px] w-[460px] object-cover"
                   />
-
-                  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black/55 px-4 py-2.5 text-accent backdrop-blur">
-                    {[
-                      { Icon: SiReact, label: "React" },
-                      { Icon: SiNextdotjs, label: "Next.js" },
-                      { Icon: SiNodedotjs, label: "Node.js" },
-                      { Icon: SiTailwindcss, label: "Tailwind" },
-                      { Icon: SiMongodb, label: "MongoDB" },
-                    ].map(({ Icon, label }) => (
-                      <div
-                        key={label}
-                        className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30 text-zinc-200 transition hover:scale-110 hover:border-accent/50 hover:text-accent"
-                        aria-label={label}
-                        title={label}
-                      >
-                        <Icon className="h-4 w-4" />
-                      </div>
-                    ))}
+                  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-accent backdrop-blur">
+                    <div className="flex gap-2">
+                      <SiReact className="h-4 w-4" />
+                      <SiNextdotjs className="h-4 w-4" />
+                      <SiNodedotjs className="h-4 w-4" />
+                      <SiTailwindcss className="h-4 w-4" />
+                      <SiMongodb className="h-4 w-4" />
+                    </div> 
                   </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
