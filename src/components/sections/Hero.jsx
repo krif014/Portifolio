@@ -1,4 +1,4 @@
-import { ChevronDown, Code2, Star } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 import {
   SiMongodb,
   SiNextdotjs,
@@ -7,23 +7,6 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
-
-function StatPill({ value, label, showDivider }) {
-  return (
-    <div className="relative flex flex-1 items-center justify-center px-4 py-3">
-      {showDivider ? (
-        <span
-          className="absolute right-0 top-1/2 hidden h-10 w-px -translate-y-1/2 bg-white/10 sm:block"
-          aria-hidden
-        />
-      ) : null}
-      <div className="text-center">
-        <p className="text-lg font-bold text-accent sm:text-xl">{value}</p>
-        <p className="mt-0.5 text-[11px] text-zinc-500 sm:text-xs">{label}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function Hero() {
   const reducedMotion =
@@ -36,6 +19,13 @@ export default function Hero() {
     });
   };
 
+  const stats = [
+    { value: "3+", label: "Years\nExperience" },
+    { value: "50+", label: "Projects\nCompleted" },
+    { value: "15+", label: "Technologies\nUsed" },
+    { value: "98%", label: "Client\nSatisfaction" },
+  ];
+
   return (
     <section
       id="about"
@@ -44,10 +34,12 @@ export default function Hero() {
       <RadialGradientBackground position="right" />
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+
+        
           <div>
-            <div className="flex content-center text-[14px] items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px]   w-[490px] pl-[38px] py-1.5 text-xs font-medium text-white">
+            <div className="flex content-center text-[14px] items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px] w-[490px] pl-[38px] py-1.5 text-xs font-medium text-white">
               <Star className="h-3.5 w-3.5 fill-white text-white" />
-              FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali,RW
+              FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali, RW
             </div>
 
             <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-[58px]">
@@ -72,14 +64,36 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="mt-10 flex w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-black/20 backdrop-blur">
-              <StatPill value="3+" label="Years Experience" showDivider />
-              <StatPill value="50+" label="Projects Completed" showDivider />
-              <StatPill value="15+" label="Technologies" showDivider />
-              <StatPill value="98%" label="Client Satisfaction" />
+          
+            <div className="mt-10 flex items-start">
+              {stats.map((stat, i) => (
+                <div
+                  key={i}
+                  className={`relative ${i !== 0 ? "pl-8" : ""} ${i !== stats.length - 1 ? "pr-8" : ""}`}
+                >
+              
+                  {i !== stats.length - 1 && (
+                    <span
+                      className="absolute right-0 w-px"
+                      style={{
+                        height: '100px',
+                        top: '70%',
+                        transform: 'translateY(-50%)',
+                        background: 'linear-gradient(to bottom, transparent, #4ade80, #16a34a40, transparent)',
+                      }}
+                    />
+                  )}
+                  <p className="text-3xl font-bold text-accent-muted leading-none">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-white mt-1 leading-snug whitespace-pre-line h-10">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-
+    
           <div className="flex justify-end max-w-xl lg:max-w-none">
             <div className="relative w-[460px] h-[570px]">
 
@@ -88,24 +102,22 @@ export default function Hero() {
                   className="absolute w-[200%] h-[200%] -top-1/2 -left-1/2 animate-spin-border"
                   style={{
                     background: `conic-gradient(
-              transparent 0deg,
-              transparent 158deg,
-              #4ade80 168deg,
-              #22c55e 175deg,
-              #4ade80 182deg,
-              transparent 192deg,
-              transparent 338deg,
-              #4ade80 348deg,
-              #22c55e 355deg,
-              #4ade80 362deg,
-              transparent 372deg
-            )`,
+                      transparent 0deg,
+                      transparent 158deg,
+                      #4ade80 168deg,
+                      #22c55e 175deg,
+                      #4ade80 182deg,
+                      transparent 192deg,
+                      transparent 338deg,
+                      #4ade80 348deg,
+                      #22c55e 355deg,
+                      #4ade80 362deg,
+                      transparent 372deg
+                    )`,
                   }}
                 />
-
                 <div className="absolute inset-[3px] rounded-[15px] bg-black" />
               </div>
-
 
               <img
                 src="images/DEV.webp"
@@ -114,17 +126,17 @@ export default function Hero() {
               />
 
               <div className="absolute h-[45px] w-[220px] bottom-4 translate-x-1/2 z-20 flex items-center gap-5 rounded-full border border-white/10 bg-transparent px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
-
-                <SiReact className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125  " />
-                <SiNextdotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
-                <SiNodedotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
-                <SiTailwindcss className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
-                <SiMongodb className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
-
+                <SiReact className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
+                <SiNextdotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
+                <SiNodedotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
+                <SiTailwindcss className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
+                <SiMongodb className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
               </div>
 
             </div>
           </div>
+        
+
         </div>
 
         <div className="mt-14 flex justify-center">
@@ -141,6 +153,7 @@ export default function Hero() {
             <ChevronDown className="h-5 w-5 animate-bounce" />
           </button>
         </div>
+
       </div>
     </section>
   );
