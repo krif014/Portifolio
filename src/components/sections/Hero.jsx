@@ -47,7 +47,7 @@ export default function Hero() {
           <div>
             <div className="flex content-center text-[14px] items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px]   w-[490px] pl-[38px] py-1.5 text-xs font-medium text-white">
               <Star className="h-3.5 w-3.5 fill-white text-white" />
-              FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali,RW 
+              FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali,RW
             </div>
 
             <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-[58px]">
@@ -80,8 +80,8 @@ export default function Hero() {
             </div>
           </div>
 
-         <div className="flex justify-end max-w-xl lg:max-w-none">
-            <div className="relative w-[320px] h-[380px]">
+          <div className="flex justify-end max-w-xl lg:max-w-none">
+            <div className="relative w-[460px] h-[570px]">
 
               <div className="absolute inset-0 rounded-[18px] overflow-hidden">
                 <div
@@ -106,24 +106,25 @@ export default function Hero() {
                 <div className="absolute inset-[3px] rounded-[15px] bg-black" />
               </div>
 
-            
+
               <img
                 src="images/DEV.webp"
                 alt=""
                 className="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] object-cover rounded-[15px] z-10"
               />
 
-              {/* Tech bar */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
-                <SiReact className="h-4 w-4" />
-                <SiNextdotjs className="h-4 w-4" />
-                <SiNodedotjs className="h-4 w-4" />
-                <SiTailwindcss className="h-4 w-4" />
-                <SiMongodb className="h-4 w-4" />
+              <div className="absolute h-[45px] w-[220px] bottom-4 translate-x-1/2 z-20 flex items-center gap-5 rounded-full border border-white/10 bg-transparent px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
+
+                <SiReact className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125  " />
+                <SiNextdotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
+                <SiNodedotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
+                <SiTailwindcss className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
+                <SiMongodb className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125 " />
+
               </div>
 
             </div>
-</div>
+          </div>
         </div>
 
         <div className="mt-14 flex justify-center">
