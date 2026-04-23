@@ -80,21 +80,38 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex justify-end  max-w-xl lg:max-w-none"> 
-                  <img
-                    src="images/DEV.webp"
-                    alt=""
-                    className=" h-[530px] w-[460px] object-cover  rounded-2xl "
-                  />
-                  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-accent backdrop-blur">
-                    <div className="flex gap-2">
-                      <SiReact className="h-4 w-4" />
-                      <SiNextdotjs className="h-4 w-4" />
-                      <SiNodedotjs className="h-4 w-4" />
-                      <SiTailwindcss className="h-4 w-4" />
-                      <SiMongodb className="h-4 w-4" />
-                    </div> 
-                  </div>
+          <div className="flex justify-end max-w-xl lg:max-w-none">
+            <div className="relative w-[460px] h-[530px]">
+
+            
+              <div className="absolute inset-0 rounded-2xl p-[2px] animate-spin-slow">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-r from-green-500 via-transparent to-green-500 blur-[2px]" />
+              </div>
+
+            
+              <div className="absolute inset-0 rounded-2xl p-[2px] animate-spin-reverse">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-b from-green-400 via-transparent to-green-400 blur-[4px]" />
+              </div>
+
+       
+              <img
+                src="images/DEV.webp"
+                alt=""
+                className="relative h-[530px] w-[460px] object-cover rounded-2xl"
+              />
+
+             
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-accent backdrop-blur">
+                <div className="flex gap-2">
+                  <SiReact className="h-4 w-4" />
+                  <SiNextdotjs className="h-4 w-4" />
+                  <SiNodedotjs className="h-4 w-4" />
+                  <SiTailwindcss className="h-4 w-4" />
+                  <SiMongodb className="h-4 w-4" />
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
