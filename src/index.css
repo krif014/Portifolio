@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
 
 @tailwind base;
 @tailwind components;
@@ -41,7 +39,9 @@
     scrollbar-width: thin;
     scrollbar-color: #4ade80 #0a0a0a;
   }
+}
 
+@layer utilities {
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -64,6 +64,4 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
-  
 }

@@ -3,6 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        'spin-border': 'spin-cw 4s linear infinite',
+      },
+      keyframes: {
+        'spin-cw': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+        
       colors: {
         accent: {
           DEFAULT: "#4ade80",
