@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
 import {
   SiMongodb,
@@ -8,6 +9,51 @@ import {
 } from "react-icons/si";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import ScrollReveal from "../animations/ScrollReveal";
+
+function useCountUp(target, duration = 1500, startCounting = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) return;
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [startCounting, target, duration]);
+
+  return count;
+}
+
+function StatNumber({ value, delayMs = 0 }) {
+  const [started, setStarted] = useState(false);
+  const ref = useRef(null);
+
+  // parse "3+" → { num: 3, suffix: "+" }
+  const match = value.match(/^(\d+)(.*)$/);
+  const target = match ? parseInt(match[1]) : 0;
+  const suffix = match ? match[2] : "";
+
+  const count = useCountUp(target, 1500, started);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStarted(true), delayMs);
+    return () => clearTimeout(timer);
+  }, [delayMs]);
+
+  return (
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+}
 
 export default function Hero() {
   const reducedMotion =
@@ -91,7 +137,7 @@ export default function Hero() {
                       />
                     )}
                     <p className="text-3xl font-bold text-accent-muted leading-none">
-                      {stat.value}
+                      <StatNumber value={stat.value} delayMs={400 + i * 100} />
                     </p>
                     <p className="text-sm text-white mt-1 leading-snug whitespace-pre-line h-10">
                       {stat.label}
