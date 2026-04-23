@@ -31,7 +31,7 @@ export default function Hero() {
       id="about"
       className="relative overflow-hidden border-b border-white/5"
     >
-      <RadialGradientBackground position="right" />
+ 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
 
@@ -96,6 +96,9 @@ export default function Hero() {
     
           <div className="flex justify-end max-w-xl lg:max-w-none">
             <div className="relative w-[460px] h-[570px]">
+
+             
+
 
               <div className="absolute inset-0 rounded-[18px] overflow-hidden">
                 <div
