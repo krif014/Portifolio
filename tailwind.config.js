@@ -16,6 +16,7 @@ export default {
         'xs': '375px',
         '422': '422px',   
       }, 
+      
       colors: {
         accent: {
           DEFAULT: "#4ade80",
