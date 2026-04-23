@@ -11,7 +11,11 @@ export default {
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
-      },                         
+      },  
+      screens: {
+        'xs': '375px',
+        '422': '422px',   
+      }, 
       colors: {
         accent: {
           DEFAULT: "#4ade80",

@@ -7,12 +7,10 @@ import {
   SiReact,
   SiTailwindcss,
 } from "react-icons/si";
-import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import ScrollReveal from "../animations/ScrollReveal";
 
 function useCountUp(target, duration = 1500, startCounting = false) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!startCounting) return;
     let start = 0;
@@ -28,31 +26,20 @@ function useCountUp(target, duration = 1500, startCounting = false) {
     }, 16);
     return () => clearInterval(timer);
   }, [startCounting, target, duration]);
-
   return count;
 }
 
 function StatNumber({ value, delayMs = 0 }) {
   const [started, setStarted] = useState(false);
-  const ref = useRef(null);
-
-  // parse "3+" → { num: 3, suffix: "+" }
   const match = value.match(/^(\d+)(.*)$/);
   const target = match ? parseInt(match[1]) : 0;
   const suffix = match ? match[2] : "";
-
   const count = useCountUp(target, 1500, started);
-
   useEffect(() => {
     const timer = setTimeout(() => setStarted(true), delayMs);
     return () => clearTimeout(timer);
   }, [delayMs]);
-
-  return (
-    <span ref={ref}>
-      {count}{suffix}
-    </span>
-  );
+  return <span>{count}{suffix}</span>;
 }
 
 export default function Hero() {
@@ -81,17 +68,18 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
 
-          {/* LEFT COLUMN */}
+        
           <div>
             <ScrollReveal delayMs={0}>
-              <div className="flex content-center text-[14px] items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px] w-[490px] pl-[38px] py-1.5 text-xs font-medium text-white">
-                <Star className="h-3.5 w-3.5 fill-white text-white" />
-                FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali, RW
+   
+              <div className="flex items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px] w-full max-w-[490px] pl-4 sm:pl-[38px] pr-4 py-1.5 text-xs font-medium text-white">
+                <Star className="h-3.5 w-3.5 shrink-0 fill-white text-white" />
+                <span className="truncate">FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali, RW</span>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delayMs={100}>
-              <h1 className="mt-6 text-5xl leading-tight tracking-tight text-white sm:text-5xl lg:text-[58px]">
+              <h1 className="mt-6 text-4xl leading-tight tracking-tight text-white sm:text-5xl lg:text-[58px]">
                 Aspiring Developer
                 <br />
                 Portfolio
@@ -99,7 +87,7 @@ export default function Hero() {
             </ScrollReveal>
 
             <ScrollReveal delayMs={200}>
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-lg">
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
                 Building modern, scalable web applications with React, JavaScript,
                 and cutting-edge technologies. Transforming ideas into exceptional
                 digital experiences.
@@ -119,24 +107,25 @@ export default function Hero() {
             </ScrollReveal>
 
             <ScrollReveal delayMs={400}>
-              <div className="mt-10 flex items-start">
+              <div className="mt-10 flex flex-wrap items-start gap-y-4">
                 {stats.map((stat, i) => (
                   <div
                     key={i}
-                    className={`relative ${i !== 0 ? "pl-8" : ""} ${i !== stats.length - 1 ? "pr-8" : ""}`}
+                    className={`relative ${i !== 0 ? "pl-2 sm:pl-8" : ""} ${i !== stats.length - 1 ? "pr-5 sm:pr-8" : ""}`}
                   >
                     {i !== stats.length - 1 && (
                       <span
                         className="absolute right-0 w-px"
                         style={{
-                          height: '100px',
-                          top: '70%',
-                          transform: 'translateY(-50%)',
-                          background: 'linear-gradient(to bottom, transparent, #4ade80, #16a34a40, transparent)',
+                          height: "100px",
+                          top: "70%",
+                          transform: "translateY(-50%)",
+                          background:
+                            "linear-gradient(to bottom, transparent, #4ade80, #16a34a40, transparent)",
                         }}
                       />
                     )}
-                    <p className="text-3xl font-bold text-accent-muted leading-none">
+                    <p className="text-2xl font-bold text-accent-muted leading-none sm:text-3xl">
                       <StatNumber value={stat.value} delayMs={400 + i * 100} />
                     </p>
                     <p className="text-sm text-white mt-1 leading-snug whitespace-pre-line h-10">
@@ -147,12 +136,11 @@ export default function Hero() {
               </div>
             </ScrollReveal>
           </div>
-          {/* END LEFT COLUMN */}
-
-          {/* RIGHT COLUMN */}
+          
           <ScrollReveal delayMs={200} y={32}>
-            <div className="flex justify-end max-w-xl lg:max-w-none">
-              <div className="relative w-[460px] h-[570px]">
+            <div className="flex justify-center lg:justify-end max-w-xl lg:max-w-none">
+              <div className="relative w-full max-w-[460px] lg:w-[460px] lg:h-[570px]"
+                style={{ aspectRatio: "460/570" }}>
 
                 <div className="absolute inset-0 rounded-[18px] overflow-hidden">
                   <div
@@ -178,11 +166,11 @@ export default function Hero() {
 
                 <img
                   src="images/DEV.webp"
-                  alt=""
+                  alt="Developer"
                   className="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] object-cover rounded-[15px] z-10"
                 />
 
-                <div className="absolute h-[45px] w-[220px] bottom-4 translate-x-1/2 z-20 flex items-center gap-5 rounded-full border border-white/10 bg-transparent px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5 rounded-full border border-white/10 bg-transparent px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
                   <SiReact className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
                   <SiNextdotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
                   <SiNodedotjs className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
@@ -193,7 +181,7 @@ export default function Hero() {
               </div>
             </div>
           </ScrollReveal>
-          {/* END RIGHT COLUMN */}
+        
 
         </div>
 
