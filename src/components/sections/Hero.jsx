@@ -139,7 +139,7 @@ export default function Hero() {
 
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-1 flex justify-center">
           <button
             type="button"
             onClick={() =>
@@ -147,10 +147,10 @@ export default function Hero() {
                 behavior: reducedMotion ? "auto" : "smooth",
               })
             }
-            className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 backdrop-blur transition hover:border-accent/50 hover:text-accent"
+            className="text-accent"
             aria-label="Scroll down"
           >
-            <ChevronDown className="h-5 w-5 animate-bounce" />
+            <ChevronDown className="h-8 w-8 animate-bounce" />
           </button>
         </div>
 
