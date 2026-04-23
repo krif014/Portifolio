@@ -80,39 +80,50 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex justify-end max-w-xl lg:max-w-none">
-            <div className="relative w-[460px] h-[530px]">
+         <div className="flex justify-end max-w-xl lg:max-w-none">
+            <div className="relative w-[320px] h-[380px]">
 
-            
-              <div className="absolute inset-0 rounded-2xl p-[2px] animate-spin-slow">
-                <div className="w-full h-full rounded-2xl bg-gradient-to-r from-green-500 via-transparent to-green-500 blur-[2px]" />
+              <div className="absolute inset-0 rounded-[18px] overflow-hidden">
+                <div
+                  className="absolute w-[200%] h-[200%] -top-1/2 -left-1/2 animate-spin-border"
+                  style={{
+                    background: `conic-gradient(
+              transparent 0deg,
+              transparent 158deg,
+              #4ade80 168deg,
+              #22c55e 175deg,
+              #4ade80 182deg,
+              transparent 192deg,
+              transparent 338deg,
+              #4ade80 348deg,
+              #22c55e 355deg,
+              #4ade80 362deg,
+              transparent 372deg
+            )`,
+                  }}
+                />
+
+                <div className="absolute inset-[3px] rounded-[15px] bg-black" />
               </div>
 
             
-              <div className="absolute inset-0 rounded-2xl p-[2px] animate-spin-reverse">
-                <div className="w-full h-full rounded-2xl bg-gradient-to-b from-green-400 via-transparent to-green-400 blur-[4px]" />
-              </div>
-
-       
               <img
                 src="images/DEV.webp"
                 alt=""
-                className="relative h-[530px] w-[460px] object-cover rounded-2xl"
+                className="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] object-cover rounded-[15px] z-10"
               />
 
-             
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-accent backdrop-blur">
-                <div className="flex gap-2">
-                  <SiReact className="h-4 w-4" />
-                  <SiNextdotjs className="h-4 w-4" />
-                  <SiNodedotjs className="h-4 w-4" />
-                  <SiTailwindcss className="h-4 w-4" />
-                  <SiMongodb className="h-4 w-4" />
-                </div>
+              {/* Tech bar */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-green-400 backdrop-blur whitespace-nowrap">
+                <SiReact className="h-4 w-4" />
+                <SiNextdotjs className="h-4 w-4" />
+                <SiNodedotjs className="h-4 w-4" />
+                <SiTailwindcss className="h-4 w-4" />
+                <SiMongodb className="h-4 w-4" />
               </div>
 
             </div>
-          </div>
+</div>
         </div>
 
         <div className="mt-14 flex justify-center">
