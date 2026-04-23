@@ -80,11 +80,11 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto  max-w-xl lg:max-w-none"> 
+          <div className="flex justify-end  max-w-xl lg:max-w-none"> 
                   <img
-                    src="images\DEV.webp"
+                    src="images/DEV.webp"
                     alt=""
-                    className="h-[530px] w-[460px] object-cover"
+                    className=" h-[530px] w-[460px] object-cover  rounded-2xl "
                   />
                   <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black px-4 py-2.5 text-accent backdrop-blur">
                     <div className="flex gap-2">
