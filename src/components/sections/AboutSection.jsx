@@ -46,9 +46,7 @@ function FeatureCard({ icon: Icon, title, description, className = "" }) {
     return (
         <div
             className={`group relative rounded-2xl bg-zinc-900/60 p-6 transition-all duration-300 hover:bg-zinc-900/80 ${className}`}
-            style={{
-                border: "1px solid rgba(74,222,128,0.15)",
-            }}
+            style={{ border: "1px solid rgba(74,222,128,0.15)" }}
             onMouseEnter={e => e.currentTarget.style.borderColor = "rgba(74,222,128,0.6)"}
             onMouseLeave={e => e.currentTarget.style.borderColor = "rgba(74,222,128,0.15)"}
         >
@@ -114,7 +112,7 @@ export default function AboutSection() {
             ref={sectionRef}
             className="relative overflow-hidden border-b border-white/5 bg-black py-20 lg:py-28"
         >
-            {/* ── Quarter-circle arc bottom-right — the other half lives in TechStack ── */}
+            {/* Quarter-circle arc — bottom-right */}
             <div
                 className="pointer-events-none absolute -bottom-56 -right-56 h-[560px] w-[560px] rounded-full opacity-50"
                 style={{
@@ -129,32 +127,23 @@ export default function AboutSection() {
                     {/* ── Left column ── */}
                     <div className="flex flex-col justify-center">
 
-                        {/* Badge */}
+                        {/* Heading — large, matches screenshot font size */}
                         <ScrollReveal delayMs={0}>
-                            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent">
-                                <Code2 className="h-3.5 w-3.5" />
-                                Full-Stack Developer
-                                <Sparkles className="h-3.5 w-3.5" />
-                            </div>
-                        </ScrollReveal>
-
-                        {/* Heading */}
-                        <ScrollReveal delayMs={80}>
-                            <h2 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[52px]">
+                            <h2 className="text-[42px] font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[56px]">
                                 Crafting Digital
                                 <br />
                                 Experiences That Matter
                             </h2>
                         </ScrollReveal>
 
-                        {/* Body */}
-                        <ScrollReveal delayMs={160}>
-                            <div className="mt-7 space-y-4 text-base leading-relaxed text-zinc-400">
+                        {/* Body paragraphs */}
+                        <ScrollReveal delayMs={100}>
+                            <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-zinc-400">
                                 <p>
-                                    I'm a passionate full-stack developer with over 3 years of
-                                    experience building scalable, performant web applications. I
-                                    specialize in creating intuitive user interfaces that combine
-                                    beautiful design with exceptional functionality.
+                                    I'm a passionate React developer with over 3 years of
+                                    experience building scalable, performant web applications.
+                                    I specialize in creating intuitive user interfaces that
+                                    combine beautiful design with exceptional functionality.
                                 </p>
                                 <p>
                                     My expertise spans the entire frontend ecosystem, from React
@@ -170,37 +159,46 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                        {/* Stats — green left-border bar exactly like the screenshot */}
-                        <ScrollReveal delayMs={240}>
-                            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-6">
+                        {/* Stats — same vertical gradient divider style as Hero */}
+                        <ScrollReveal delayMs={200}>
+                            <div className="mt-10 flex flex-wrap items-start gap-y-4">
                                 {stats.map((stat, i) => (
-                                    <div key={i} className="flex items-stretch gap-3">
-                                        {/* Solid green left bar */}
-                                        <div
-                                            className="w-[3px] shrink-0 rounded-full"
-                                            style={{ background: "linear-gradient(to bottom, #4ade80, #16a34a)" }}
-                                        />
-                                        <div>
-                                            <p className="text-3xl font-bold text-white sm:text-4xl">
-                                                {inView
-                                                    ? <StatNumber value={stat.value} delayMs={stat.delayMs} />
-                                                    : <span>0{stat.value.replace(/[\d.]/g, "")}</span>
-                                                }
-                                            </p>
-                                            <p className="mt-1 text-sm text-zinc-400">{stat.label}</p>
-                                        </div>
+                                    <div
+                                        key={i}
+                                        className={`relative ${i !== 0 ? "pl-6 sm:pl-10" : ""} ${i !== stats.length - 1 ? "pr-6 sm:pr-10" : ""}`}
+                                    >
+                                        {/* Gradient vertical divider — identical to Hero */}
+                                        {i !== stats.length - 1 && (
+                                            <span
+                                                className="absolute right-0 w-px"
+                                                style={{
+                                                    height: "100px",
+                                                    top: "70%",
+                                                    transform: "translateY(-50%)",
+                                                    background:
+                                                        "linear-gradient(to bottom, transparent, #4ade80, #16a34a40, transparent)",
+                                                }}
+                                            />
+                                        )}
+                                        <p className="text-3xl font-bold text-white leading-none sm:text-4xl">
+                                            {inView
+                                                ? <StatNumber value={stat.value} delayMs={stat.delayMs} />
+                                                : <span>0{stat.value.replace(/[\d.]/g, "")}</span>
+                                            }
+                                        </p>
+                                        <p className="mt-1.5 text-sm text-zinc-400">{stat.label}</p>
                                     </div>
                                 ))}
                             </div>
                         </ScrollReveal>
 
-                        {/* Download Resume */}
-                        <ScrollReveal delayMs={320}>
-                            <div className="mt-8">
+                        {/* Download Resume — white filled pill button */}
+                        <ScrollReveal delayMs={300}>
+                            <div className="mt-9">
                                 <a
                                     href="/resume.pdf"
                                     download
-                                    className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-accent/50 hover:bg-accent/10 hover:text-accent"
+                                    className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-all duration-200 hover:bg-zinc-100"
                                 >
                                     <Download className="h-4 w-4" />
                                     Download Resume
@@ -213,7 +211,7 @@ export default function AboutSection() {
                     <div className="flex flex-col gap-4">
 
                         {/* Top wide card */}
-                        <ScrollReveal delayMs={100}>
+                        <ScrollReveal delayMs={80}>
                             <FeatureCard
                                 icon={cards[0].icon}
                                 title={cards[0].title}
@@ -224,7 +222,7 @@ export default function AboutSection() {
 
                         {/* Two equal cards */}
                         <div className="grid grid-cols-2 gap-4">
-                            <ScrollReveal delayMs={180}>
+                            <ScrollReveal delayMs={160}>
                                 <FeatureCard
                                     icon={cards[1].icon}
                                     title={cards[1].title}
@@ -232,7 +230,7 @@ export default function AboutSection() {
                                     className="h-full"
                                 />
                             </ScrollReveal>
-                            <ScrollReveal delayMs={220}>
+                            <ScrollReveal delayMs={200}>
                                 <FeatureCard
                                     icon={cards[2].icon}
                                     title={cards[2].title}
@@ -243,7 +241,7 @@ export default function AboutSection() {
                         </div>
 
                         {/* Bottom highlight bar */}
-                        <ScrollReveal delayMs={280}>
+                        <ScrollReveal delayMs={260}>
                             <div
                                 className="flex items-center justify-around rounded-2xl bg-zinc-900/60 px-6 py-5 transition-all duration-300 hover:bg-zinc-900/80"
                                 style={{ border: "1px solid rgba(74,222,128,0.15)" }}
