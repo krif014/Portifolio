@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { Code2, Sparkles, Download } from "lucide-react";
 import ScrollReveal from "../animations/ScrollReveal";
 
-// ── Count-up hook ────────────────────────────────────────────────────────────
 function useCountUp(target, duration = 1800, startCounting = false) {
     const [count, setCount] = useState(0);
     useEffect(() => {
@@ -41,7 +40,7 @@ function StatNumber({ value, delayMs = 0 }) {
     return <span>{display}{suffix}</span>;
 }
 
-// ── Feature card ─────────────────────────────────────────────────────────────
+
 function FeatureCard({ icon: Icon, title, description, className = "" }) {
     return (
         <div
@@ -59,7 +58,7 @@ function FeatureCard({ icon: Icon, title, description, className = "" }) {
     );
 }
 
-// ── Main section ─────────────────────────────────────────────────────────────
+
 export default function AboutSection() {
     const sectionRef = useRef(null);
     const [inView, setInView] = useState(false);
@@ -110,9 +109,9 @@ export default function AboutSection() {
         <section
             id="about-detail"
             ref={sectionRef}
-            className="relative overflow-hidden border-b border-white/5 bg-black py-20 lg:py-28"
+            className="relative overflow-hidden border-b border-white/5 bg-black pb-20 lg:py-28"
         >
-            {/* Quarter-circle arc — bottom-right */}
+          
             <div
                 className="pointer-events-none absolute -bottom-56 -right-56 h-[560px] w-[560px] rounded-full opacity-50"
                 style={{
@@ -124,21 +123,29 @@ export default function AboutSection() {
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
 
-                    {/* ── Left column ── */}
                     <div className="flex flex-col justify-center">
 
-                        {/* Heading — large, matches screenshot font size */}
+                       
                         <ScrollReveal delayMs={0}>
-                            <h2 className="text-[42px] font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[56px]">
+                            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/20 h-[40px] px-5 py-2 text-sm font-medium text-white">
+                                <Code2 className="h-4 w-4 shrink-0 text-accent" />
+                                <span>Full-Stack Developer</span>
+                                <Sparkles className="h-4 w-4 shrink-0 text-accent" />
+                            </div>
+                        </ScrollReveal>
+
+                    
+                        <ScrollReveal delayMs={80}>
+                            <h2 className="text-[42px] mt-[20px] font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[52px]">
                                 Crafting Digital
                                 <br />
                                 Experiences That Matter
                             </h2>
                         </ScrollReveal>
 
-                        {/* Body paragraphs */}
-                        <ScrollReveal delayMs={100}>
-                            <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-zinc-400">
+                       
+                        <ScrollReveal delayMs={160}>
+                            <div className="mt-11 space-y-4 text-[15px] leading-relaxed text-zinc-400">
                                 <p>
                                     I'm a passionate React developer with over 3 years of
                                     experience building scalable, performant web applications.
@@ -159,15 +166,14 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                        {/* Stats — same vertical gradient divider style as Hero */}
-                        <ScrollReveal delayMs={200}>
-                            <div className="mt-10 flex flex-wrap items-start gap-y-4">
+                        
+                        <ScrollReveal delayMs={240}>
+                            <div className="mt-[68px] flex flex-wrap items-start gap-y-4">
                                 {stats.map((stat, i) => (
                                     <div
                                         key={i}
                                         className={`relative ${i !== 0 ? "pl-6 sm:pl-10" : ""} ${i !== stats.length - 1 ? "pr-6 sm:pr-10" : ""}`}
                                     >
-                                        {/* Gradient vertical divider — identical to Hero */}
                                         {i !== stats.length - 1 && (
                                             <span
                                                 className="absolute right-0 w-px"
@@ -192,8 +198,8 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                        {/* Download Resume — white filled pill button */}
-                        <ScrollReveal delayMs={300}>
+                       
+                        <ScrollReveal delayMs={320}>
                             <div className="mt-9">
                                 <a
                                     href="/resume.pdf"
@@ -207,10 +213,10 @@ export default function AboutSection() {
                         </ScrollReveal>
                     </div>
 
-                    {/* ── Right column ── */}
-                    <div className="flex flex-col gap-4">
+                
+                    <div className="flex flex-col pt-[90px] gap-4">
 
-                        {/* Top wide card */}
+                     
                         <ScrollReveal delayMs={80}>
                             <FeatureCard
                                 icon={cards[0].icon}
@@ -220,7 +226,7 @@ export default function AboutSection() {
                             />
                         </ScrollReveal>
 
-                        {/* Two equal cards */}
+                        
                         <div className="grid grid-cols-2 gap-4">
                             <ScrollReveal delayMs={160}>
                                 <FeatureCard
@@ -240,7 +246,7 @@ export default function AboutSection() {
                             </ScrollReveal>
                         </div>
 
-                        {/* Bottom highlight bar */}
+                    
                         <ScrollReveal delayMs={260}>
                             <div
                                 className="flex items-center justify-around rounded-2xl bg-zinc-900/60 px-6 py-5 transition-all duration-300 hover:bg-zinc-900/80"
