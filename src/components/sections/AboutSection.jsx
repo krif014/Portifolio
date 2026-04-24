@@ -2,9 +2,31 @@ import { useEffect, useState, useRef } from "react";
 import { Code2, Sparkles, Download } from "lucide-react";
 import ScrollReveal from "../animations/ScrollReveal";
 
+function useInView(ref) {
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                } else {
+                    setInView(false);
+                }
+            },
+            { threshold: 0, rootMargin: "-50% 0px" }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [ref]);
+    return inView;
+}
+
 function useCountUp(target, duration = 1800, startCounting = false) {
     const [count, setCount] = useState(0);
     useEffect(() => {
+        setCount(0);
         if (!startCounting) return;
         let start = 0;
         const increment = target / (duration / 16);
@@ -22,7 +44,7 @@ function useCountUp(target, duration = 1800, startCounting = false) {
     return count;
 }
 
-function StatNumber({ value, delayMs = 0 }) {
+function StatNumber({ value, delayMs = 0, inView }) {
     const [started, setStarted] = useState(false);
     const match = value.match(/^([\d.]+)(.*)$/);
     const target = match ? parseFloat(match[1]) : 0;
@@ -33,13 +55,16 @@ function StatNumber({ value, delayMs = 0 }) {
     const display = isDecimal ? (rawCount / 10).toFixed(1) : rawCount;
 
     useEffect(() => {
+        if (!inView) {
+            setStarted(false);
+            return;
+        }
         const timer = setTimeout(() => setStarted(true), delayMs);
         return () => clearTimeout(timer);
-    }, [delayMs]);
+    }, [inView, delayMs]);
 
     return <span>{display}{suffix}</span>;
 }
-
 
 function FeatureCard({ icon: Icon, title, description, className = "" }) {
     return (
@@ -58,21 +83,9 @@ function FeatureCard({ icon: Icon, title, description, className = "" }) {
     );
 }
 
-
 export default function AboutSection() {
     const sectionRef = useRef(null);
-    const [inView, setInView] = useState(false);
-
-    useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => { if (entry.isIntersecting) setInView(true); },
-            { threshold: 0.2 }
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, []);
+    const inView = useInView(sectionRef);
 
     const stats = [
         { value: "45+", label: "Happy Clients", delayMs: 0 },
@@ -111,7 +124,6 @@ export default function AboutSection() {
             ref={sectionRef}
             className="relative overflow-hidden border-b border-white/5 bg-black pb-20 lg:py-28"
         >
-          
             <div
                 className="pointer-events-none absolute -bottom-56 -right-56 h-[560px] w-[560px] rounded-full opacity-50"
                 style={{
@@ -125,7 +137,6 @@ export default function AboutSection() {
 
                     <div className="flex flex-col justify-center">
 
-                       
                         <ScrollReveal delayMs={0}>
                             <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/20 h-[40px] px-5 py-2 text-sm font-medium text-white">
                                 <Code2 className="h-4 w-4 shrink-0 text-accent" />
@@ -134,7 +145,6 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                    
                         <ScrollReveal delayMs={80}>
                             <h2 className="text-[42px] mt-[20px] font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[52px]">
                                 Crafting Digital
@@ -143,7 +153,6 @@ export default function AboutSection() {
                             </h2>
                         </ScrollReveal>
 
-                       
                         <ScrollReveal delayMs={160}>
                             <div className="mt-11 space-y-4 text-[15px] leading-relaxed text-zinc-400">
                                 <p>
@@ -166,7 +175,6 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                        
                         <ScrollReveal delayMs={240}>
                             <div className="mt-[68px] flex flex-wrap items-start gap-y-4">
                                 {stats.map((stat, i) => (
@@ -187,10 +195,7 @@ export default function AboutSection() {
                                             />
                                         )}
                                         <p className="text-3xl font-bold text-white leading-none sm:text-4xl">
-                                            {inView
-                                                ? <StatNumber value={stat.value} delayMs={stat.delayMs} />
-                                                : <span>0{stat.value.replace(/[\d.]/g, "")}</span>
-                                            }
+                                            <StatNumber value={stat.value} delayMs={stat.delayMs} inView={inView} />
                                         </p>
                                         <p className="mt-1.5 text-sm text-zinc-400">{stat.label}</p>
                                     </div>
@@ -198,7 +203,6 @@ export default function AboutSection() {
                             </div>
                         </ScrollReveal>
 
-                       
                         <ScrollReveal delayMs={320}>
                             <div className="mt-9">
                                 <a
@@ -213,10 +217,8 @@ export default function AboutSection() {
                         </ScrollReveal>
                     </div>
 
-                
                     <div className="flex flex-col pt-[90px] gap-4">
 
-                     
                         <ScrollReveal delayMs={80}>
                             <FeatureCard
                                 icon={cards[0].icon}
@@ -226,7 +228,6 @@ export default function AboutSection() {
                             />
                         </ScrollReveal>
 
-                        
                         <div className="grid grid-cols-2 gap-4">
                             <ScrollReveal delayMs={160}>
                                 <FeatureCard
@@ -246,7 +247,6 @@ export default function AboutSection() {
                             </ScrollReveal>
                         </div>
 
-                    
                         <ScrollReveal delayMs={260}>
                             <div
                                 className="flex items-center justify-around rounded-2xl bg-zinc-900/60 px-6 py-5 transition-all duration-300 hover:bg-zinc-900/80"
