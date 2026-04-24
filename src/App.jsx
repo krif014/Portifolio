@@ -1,3 +1,4 @@
+import AboutSection from "./components/sections/AboutSection";
 import ContactSection from "./components/sections/ContactSection";
 import Hero from "./components/sections/Hero";
 import ProjectsSection from "./components/sections/ProjectsSection";
@@ -14,6 +15,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <AboutSection />
         <TechStack />
         <SkillsSection />
         <ProjectsSection />
