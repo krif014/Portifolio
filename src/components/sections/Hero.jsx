@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Star } from "lucide-react";
 import {
   SiMongodb,
@@ -63,13 +63,16 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-b border-white/5 bg-black"
+      className="relative overflow-visible border-b border-white/5 bg-black"
     >
-      {/* ── Background blobs ── */}
+      {/* ── Background blobs ──
+          These use overflow-visible + negative top so they bleed UP
+          into the navbar (which is sticky + transparent/blur, so the
+          blobs show right through it). */}
 
-      {/* Leaf blob — organic shape anchored to top-left */}
+      {/* Leaf blob — organic shape, rises 80px above the section */}
       <div
-        className="pointer-events-none absolute -left-20 -top-16 h-[480px] w-[420px] opacity-90"
+        className="pointer-events-none absolute -left-20 -top-20 h-[520px] w-[440px] opacity-90"
         style={{
           background:
             "radial-gradient(ellipse at 60% 40%, #1a4d1a 0%, #0d2e0d 60%, transparent 100%)",
@@ -77,12 +80,11 @@ export default function Hero() {
         }}
       />
 
-      {/* Crescent arc — giant circle pushed off-screen so only the
-          curved border sweeps from top-left → bottom → top-right */}
+      {/* Crescent arc — pushed further up so the arc rim crosses the navbar */}
       <div
-        className="pointer-events-none absolute -left-48 -top-48 h-[900px] w-[900px] rounded-full opacity-60"
+        className="pointer-events-none absolute -left-48 -top-64 h-[960px] w-[960px] rounded-full opacity-55"
         style={{
-          border: "110px solid rgba(20, 60, 20, 0.55)",
+          border: "120px solid rgba(20, 60, 20, 0.55)",
           background: "transparent",
         }}
       />
