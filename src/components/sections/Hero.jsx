@@ -65,13 +65,34 @@ export default function Hero() {
       id="about"
       className="relative overflow-hidden border-b border-white/5 bg-black"
     >
+      {/* ── Background blobs ── */}
+
+      {/* Leaf blob — organic shape anchored to top-left */}
+      <div
+        className="pointer-events-none absolute -left-20 -top-16 h-[480px] w-[420px] opacity-90"
+        style={{
+          background:
+            "radial-gradient(ellipse at 60% 40%, #1a4d1a 0%, #0d2e0d 60%, transparent 100%)",
+          borderRadius: "60% 40% 70% 30% / 50% 60% 40% 50%",
+        }}
+      />
+
+      {/* Crescent arc — giant circle pushed off-screen so only the
+          curved border sweeps from top-left → bottom → top-right */}
+      <div
+        className="pointer-events-none absolute -left-48 -top-48 h-[900px] w-[900px] rounded-full opacity-60"
+        style={{
+          border: "110px solid rgba(20, 60, 20, 0.55)",
+          background: "transparent",
+        }}
+      />
+
+      {/* ── Main content ── */}
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
 
-        
           <div>
             <ScrollReveal delayMs={0}>
-   
               <div className="flex items-center gap-2 rounded-full border border-accent/30 bg-accent/20 h-[40px] w-full max-w-[490px] pl-4 sm:pl-[38px] pr-4 py-1.5 text-xs font-medium text-white">
                 <Star className="h-3.5 w-3.5 shrink-0 fill-white text-white" />
                 <span className="truncate">FullStack Developer &amp; UI/UX Enthusiast | Based in Kigali, RW</span>
@@ -136,12 +157,13 @@ export default function Hero() {
               </div>
             </ScrollReveal>
           </div>
-          
+
           <ScrollReveal delayMs={200} y={32}>
             <div className="flex justify-center lg:justify-end max-w-xl lg:max-w-none">
-              <div className="relative w-full max-w-[460px] lg:w-[460px] lg:h-[570px]"
-                style={{ aspectRatio: "460/570" }}>
-
+              <div
+                className="relative w-full max-w-[460px] lg:w-[460px] lg:h-[570px]"
+                style={{ aspectRatio: "460/570" }}
+              >
                 <div className="absolute inset-0 rounded-[18px] overflow-hidden">
                   <div
                     className="absolute w-[200%] h-[200%] -top-1/2 -left-1/2 animate-spin-border"
@@ -177,11 +199,9 @@ export default function Hero() {
                   <SiTailwindcss className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
                   <SiMongodb className="h-6 w-6 transition-transform duration-200 ease-in-out cursor-pointer hover:scale-125 hover:text-[#00FF88] hover:drop-shadow-[0_0_10px_rgba(0,255,136,0.9)] hover:brightness-125" />
                 </div>
-
               </div>
             </div>
           </ScrollReveal>
-        
 
         </div>
 
