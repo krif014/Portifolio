@@ -56,50 +56,46 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition ${
-        scrolled
-          ? "border-b border-white/10 bg-black/60 backdrop-blur-xl "
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+          ? "border-b border-white/10 bg-black/60 backdrop-blur-xl"
+          /* When at the top: fully transparent so the Hero blobs bleed through */
           : "border-b border-transparent bg-transparent"
-      }`}
+        }`}
     >
       <nav className="mx-auto h-[80px] flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <button
-  type="button"
-  onClick={() => scrollTo("about")}
-  className="flex items-center gap-2 group transition-all duration-200 ease-in-out transform hover:scale-[1.09] "
->
-  {/* ICON */}
-  <Code2 className="h-8 w-8 text-white " />
 
-  {/* TEXT */}
-  <span
-    className="text-[29px] font-bold tracking-tight
-    bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_50%)]
-    bg-clip-text text-transparent"
-  >
-    Krif
-  </span>
-</button>
+        <button
+          type="button"
+          onClick={() => scrollTo("about")}
+          className="flex items-center gap-2 group transition-all duration-200 ease-in-out transform hover:scale-[1.09]"
+        >
+          <Code2 className="h-8 w-8 text-white" />
+          <span
+            className="text-[29px] font-bold tracking-tight
+              bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_50%)]
+              bg-clip-text text-transparent"
+          >
+            Krif
+          </span>
+        </button>
 
         <div className="hidden items-center gap-10 md:flex">
           {LINKS.map(({ id, label }) => (
-           <button
-  key={id}
-  type="button"
-  onClick={() => scrollTo(id)}
-  className={`relative group text-base font-medium transition-colors duration-200 ${
-    active === id
-      ? "text-white"
-      : "text-zinc-400 hover:text-white"
-  }`}
->
-  {label}
-
-  <span
-    className={`absolute -bottom-1 left-0 h-px w-full origin-left transform transition-transform duration-300 ease-out
-      ${active === id ? "scale-x-100 bg-white" : "scale-x-0 bg-white group-hover:scale-x-100"}`}
-  />
-</button>
+            <button
+              key={id}
+              type="button"
+              onClick={() => scrollTo(id)}
+              className={`relative group text-base font-medium transition-colors duration-200 ${active === id
+                  ? "text-white"
+                  : "text-zinc-400 hover:text-white"
+                }`}
+            >
+              {label}
+              <span
+                className={`absolute -bottom-1 left-0 h-px w-full origin-left transform transition-transform duration-300 ease-out
+                  ${active === id ? "scale-x-100 bg-white" : "scale-x-0 bg-white group-hover:scale-x-100"}`}
+              />
+            </button>
           ))}
         </div>
 
@@ -107,7 +103,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => scrollTo("contact")}
-            className="hidden transition-1 duration-100 ease-in-out rounded-[12px] bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-glow transition hover:bg-accent md:inline-flex"
+            className="hidden rounded-[12px] bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-glow transition duration-100 ease-in-out hover:bg-accent md:inline-flex"
           >
             Hire Me
           </button>
@@ -123,46 +119,43 @@ export default function Navbar() {
       </nav>
 
       <div className="md:hidden">
-  {/* Overlay */}
-  <div
-    className={`fixed inset-0 top-[80px] z-40 bg-black/60 backdrop-blur-sm transition ${
-      open ? "opacity-100" : "opacity-0 pointer-events-none"
-    }`}
-    onClick={() => setOpen(false)}
-  />
-
-  {/* Dropdown */}
-  <div
-    className={`fixed left-0 top-[80px] z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl transition-all duration-300 ${
-      open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
-    }`}
-  >
-    <div className="px-4 py-4">
-      <div className="flex flex-col gap-1">
-        {LINKS.map(({ id, label }) => (
-          <button
-            key={id}
-            onClick={() => scrollTo(id)}
-            className={`rounded-xl px-4 py-3 text-left text-sm font-medium transition ${
-              active === id
-                ? "bg-white/10 text-white"
-                : "text-zinc-300 hover:bg-white/5 hover:text-white"
+        {/* Overlay */}
+        <div
+          className={`fixed inset-0 top-[80px] z-40 bg-black/60 backdrop-blur-sm transition ${open ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+          onClick={() => setOpen(false)}
+        />
 
-      <button
-        onClick={() => scrollTo("contact")}
-        className="mt-4 w-full rounded-[12px] bg-white py-3 text-sm font-semibold text-black transition hover:bg-accent"
-      >
-        Hire Me
-      </button>
-    </div>
-  </div>
-</div>
+        {/* Dropdown */}
+        <div
+          className={`fixed left-0 top-[80px] z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl transition-all duration-300 ${open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0 pointer-events-none"
+            }`}
+        >
+          <div className="px-4 py-4">
+            <div className="flex flex-col gap-1">
+              {LINKS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className={`rounded-xl px-4 py-3 text-left text-sm font-medium transition ${active === id
+                      ? "bg-white/10 text-white"
+                      : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                    }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollTo("contact")}
+              className="mt-4 w-full rounded-[12px] bg-white py-3 text-sm font-semibold text-black transition hover:bg-accent"
+            >
+              Hire Me
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
