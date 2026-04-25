@@ -2,17 +2,15 @@ import {
   Briefcase,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
-  GithubIcon,
   Globe,
   Layers,
   Palette,
-  TrendingUp,
   Zap,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import ScrollReveal from "../animations/ScrollReveal";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+import ProjectCard from "../ui/ProjectCard";
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 const projects = [
