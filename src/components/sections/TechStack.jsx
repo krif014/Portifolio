@@ -25,7 +25,7 @@ export default function TechStack() {
 
     
       <div
-        className="pointer-events-none absolute  "
+        className="pointer-events-none absolute"
         style={{
           width: 560,
           height: 560,
@@ -57,7 +57,7 @@ export default function TechStack() {
               key={label}
               className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/80 px-4 py-6 text-center transition hover:scale-[1.02] hover:border-accent/30 hover:shadow-glow"
             >
-              <Icon className="h-10 w-10 text-accent" aria-hidden />
+              <Icon className="h-10 w-10 text-accent-muted " aria-hidden />
               <p className="mt-3 text-xs font-medium text-white sm:text-sm">
                 {label}
               </p>
