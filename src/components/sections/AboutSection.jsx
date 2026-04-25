@@ -122,17 +122,25 @@ export default function AboutSection() {
         <section
             id="about-detail"
             ref={sectionRef}
-            className="relative overflow-hidden border-b border-white/5 bg-black pb-20 lg:py-28"
+            className="relative overflow-visible border-b border-white/5 bg-black pb-20 lg:py-28"
         >
-            <div
-                className="pointer-events-none absolute -bottom-56 -right-56 h-[560px] w-[560px] rounded-full opacity-50"
-                style={{
-                    border: "110px solid rgba(20, 60, 20, 0.55)",
-                    background: "transparent",
-                }}
-            />
+            <div className="pointer-events-none absolute inset-0 overflow-visible">
+                <div
+                    className="absolute"
+                    style={{
+                        width: 560,
+                        height: 560,
+                        right: -280,
+                        bottom: -280,
+                        borderRadius: "50%",
+                        border: "110px solid rgba(20, 60, 20, 0.55)",
+                        background: "transparent",
+                        opacity: 0.5,
+                    }}
+                />
+            </div>
 
-            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
 
                     <div className="flex flex-col justify-center">

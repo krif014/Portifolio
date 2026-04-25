@@ -22,7 +22,23 @@ export default function TechStack() {
   return (
     <section className="relative overflow-hidden border-b border-white/5 py-16 sm:py-20">
       <RadialGradientBackground className="opacity-25" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          width: 560,
+          height: 560,
+          right: -280,
+          top: -280,
+          borderRadius: "50%",
+          border: "110px solid rgba(20, 60, 20, 0.55)",
+          background: "transparent",
+          opacity: 0.5,
+        }}
+      />
+
+      <div className="relative  z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center">
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Tech Stack &amp; Expertise
