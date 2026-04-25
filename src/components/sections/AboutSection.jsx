@@ -256,7 +256,7 @@ export default function AboutSection() {
                             >
                                 {highlights.map((h, i) => (
                                     <div key={i} className="text-center">
-                                        <p className="text-2xl font-bold text-accent sm:text-3xl">{h.value}</p>
+                                        <p className="text-2xl font-bold  text-accent-muted  sm:text-3xl">{h.value}</p>
                                         <p className="mt-1 text-xs text-zinc-400">{h.label}</p>
                                     </div>
                                 ))}

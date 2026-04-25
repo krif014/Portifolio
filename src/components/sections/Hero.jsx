@@ -65,12 +65,7 @@ export default function Hero() {
       id="about"
       className="relative overflow-visible border-b border-white/5 bg-black"
     >
-      {/* ── Background blobs ──
-          These use overflow-visible + negative top so they bleed UP
-          into the navbar (which is sticky + transparent/blur, so the
-          blobs show right through it). */}
-
-      {/* Leaf blob — organic shape, rises 80px above the section */}
+    
       <div
         className="pointer-events-none absolute -left-20 -top-20 h-[520px] w-[440px] opacity-90"
         style={{
@@ -80,7 +75,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Crescent arc — pushed further up so the arc rim crosses the navbar */}
+    
       <div
         className="pointer-events-none absolute -left-48 -top-64 h-[960px] w-[960px] rounded-full opacity-55"
         style={{
@@ -89,7 +84,7 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Main content ── */}
+     
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
 
