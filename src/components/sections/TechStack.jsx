@@ -25,14 +25,14 @@ export default function TechStack() {
 
     
       <div
-        className="pointer-events-none absolute"
+        className="pointer-events-none absolute  "
         style={{
           width: 560,
           height: 560,
           right: -280,
           top: -280,
           borderRadius: "50%",
-          border: "110px solid rgba(20, 60, 20, 0.55)",
+          border: "110px solid rgba(20, 60, 20, 0.01)",
           background: "transparent",
           opacity: 0.5,
         }}
