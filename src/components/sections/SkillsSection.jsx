@@ -46,19 +46,18 @@ const skillGroups = [
   },
 ];
 
-// All levels are green tints — Expert brightest, Intermediate more muted
 const levelConfig = {
-  Expert: {
+  Intermediate: {
     badge: "border-emerald-400/70 bg-emerald-400/15 text-emerald-400",
     barFrom: "#166534",
     barTo: "#4ade80",
   },
-  Advanced: {
+  Expert : {
     badge: "border-green-500/70 bg-green-500/15 text-green-400",
     barFrom: "#14532d",
     barTo: "#22c55e",
   },
-  Intermediate: {
+  Advanced : {
     badge: "border-teal-500/70 bg-teal-500/15 text-teal-400",
     barFrom: "#134e4a",
     barTo: "#2dd4bf",
@@ -106,17 +105,17 @@ function SkillCard({ group, delayMs }) {
   return (
     <ScrollReveal delayMs={delayMs}>
       <div
-        className="h-full rounded-2xl p-6 transition-all duration-300"
+        className=" rounded-2xl p-6 transition-all duration-300"
         style={{
-          background: "rgba(24, 24, 27, 0.7)",
+          background: "rgba(20, 83, 45, 0.15)",
           border: "1px solid rgba(74,222,128,0.12)",
         }}
         onMouseEnter={e => {
           e.currentTarget.style.background = "rgba(20, 83, 45, 0.18)";
-          e.currentTarget.style.borderColor = "rgba(74,222,128,0.45)";
+          e.currentTarget.style.borderColor = "rgba(74,222,128,0.19)";
         }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = "rgba(24, 24, 27, 0.7)";
+       onMouseLeave={e => {
+          e.currentTarget.style.background = "rgba(20, 83, 45, 0.15)";
           e.currentTarget.style.borderColor = "rgba(74,222,128,0.12)";
         }}
       >
