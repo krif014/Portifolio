@@ -12,7 +12,7 @@ import ScrollReveal from "../animations/ScrollReveal";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import ProjectCard from "../ui/ProjectCard";
 
-// ── Data ─────────────────────────────────────────────────────────────────────
+
 const projects = [
   {
     id: 1,
@@ -53,16 +53,17 @@ const projects = [
     demoUrl: "",
     githubUrl: "",
   },
+     
   {
     id: 4,
-    title: "Real-Time Chat App",
+    title: "Admin Dashboard",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A real-time messaging application enabling instant communication between users with live messaging, notifications, and secure authentication.",
-    image: "/images/projects/project4.png",
+    description: "A powerful admin dashboard for managing users, analytics, and system data with real-time insights and interactive charts.",
+    image: "/images/projects/project7.png",
     category: "Full Stack",
-    technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
-    metric: "Real-time latency under 100ms",
+    technologies: ["React", "Node.js", "Chart.js", "MongoDB"],
+    metric: "Improved data monitoring efficiency",
     demoUrl: "",
     githubUrl: "",
   },
@@ -94,14 +95,14 @@ const projects = [
   },
   {
     id: 7,
-    title: "Admin Dashboard",
+    title: "Real-Time Chat App",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A powerful admin dashboard for managing users, analytics, and system data with real-time insights and interactive charts.",
-    image: "/images/projects/project7.png",
+    description: "A real-time messaging application enabling instant communication between users with live messaging, notifications, and secure authentication.",
+    image: "/images/projects/project4.png",
     category: "Full Stack",
-    technologies: ["React", "Node.js", "Chart.js", "MongoDB"],
-    metric: "Improved data monitoring efficiency",
+    technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
+    metric: "Real-time latency under 100ms",
     demoUrl: "",
     githubUrl: "",
   },
@@ -115,7 +116,7 @@ const filterTags = [
 ];
 
 
-// ── Main Section ──────────────────────────────────────────────────────────────
+
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("all");
   const [page, setPage] = useState(0);
@@ -153,7 +154,6 @@ export default function ProjectsSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
@@ -169,7 +169,7 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Filter tabs */}
+ 
         <ScrollReveal delayMs={80}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {filterTags.map(({ id, label, icon: Icon }) => {
@@ -189,7 +189,7 @@ export default function ProjectsSection() {
                 >
                   <Icon className="h-4 w-4" />
                   {label}
-                  {/* Glow dot for active */}
+                  
                   {active && (
                     <span
                       className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-accent"
@@ -202,10 +202,10 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Carousel */}
+       
         <div className="relative mt-14">
 
-          {/* Prev arrow */}
+        
           <button
             type="button"
             onClick={() => goTo(page - 1)}
@@ -215,7 +215,7 @@ export default function ProjectsSection() {
             <ChevronLeft className="h-5 w-5" />
           </button>
 
-          {/* Next arrow */}
+ 
           <button
             type="button"
             onClick={() => goTo(page + 1)}
@@ -225,7 +225,6 @@ export default function ProjectsSection() {
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          {/* Slides */}
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out gap-6"
@@ -245,7 +244,7 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          {/* Dots */}
+    
           <div className="mt-10 flex items-center justify-center gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
