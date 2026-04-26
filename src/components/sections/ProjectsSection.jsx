@@ -12,14 +12,14 @@ import ScrollReveal from "../animations/ScrollReveal";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import ProjectCard from "../ui/ProjectCard";
 
-
 const projects = [
   {
     id: 1,
     title: "E-Commerce Platform",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A modern e-commerce platform designed for fast, seamless shopping experiences. Secure payments and efficient delivery ensure reliability and convenience.",
+    description:
+      "A modern e-commerce platform designed for fast, seamless shopping experiences. Secure payments and efficient delivery ensure reliability and convenience.",
     image: "/images/projects/project3.png",
     category: "Full Stack",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
@@ -32,7 +32,8 @@ const projects = [
     title: "AI Chat Assistant",
     subtitle: "WEB APP",
     displayCategory: "Web Apps",
-    description: "An intelligent AI-powered chat assistant designed to provide instant responses and automate conversations through natural language processing.",
+    description:
+      "An intelligent AI-powered chat assistant designed to provide instant responses and automate conversations through natural language processing.",
     image: "/images/projects/project1.png",
     category: "Web Apps",
     technologies: ["React", "Node.js", "OpenAI API", "Express"],
@@ -45,7 +46,8 @@ const projects = [
     title: "Portfolio Website",
     subtitle: "UI COMPONENTS",
     displayCategory: "UI Components",
-    description: "A modern developer portfolio showcasing projects, skills, and achievements with smooth animations and responsive layouts.",
+    description:
+      "A modern developer portfolio showcasing projects, skills, and achievements with smooth animations and responsive layouts.",
     image: "/images/projects/project2.png",
     category: "UI Components",
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
@@ -53,13 +55,13 @@ const projects = [
     demoUrl: "",
     githubUrl: "",
   },
-     
   {
     id: 4,
     title: "Admin Dashboard",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A powerful admin dashboard for managing users, analytics, and system data with real-time insights and interactive charts.",
+    description:
+      "A powerful admin dashboard for managing users, analytics, and system data with real-time insights and interactive charts.",
     image: "/images/projects/project7.png",
     category: "Full Stack",
     technologies: ["React", "Node.js", "Chart.js", "MongoDB"],
@@ -72,7 +74,8 @@ const projects = [
     title: "Task Management System",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A productivity platform for managing tasks, deadlines, and team collaboration with intuitive dashboards.",
+    description:
+      "A productivity platform for managing tasks, deadlines, and team collaboration with intuitive dashboards.",
     image: "/images/projects/project5.png",
     category: "Full Stack",
     technologies: ["React", "Node.js", "PostgreSQL"],
@@ -85,7 +88,8 @@ const projects = [
     title: "Weather Forecast App",
     subtitle: "WEB APP",
     displayCategory: "Web Apps",
-    description: "A real-time weather application providing accurate forecasts and location-based updates with a clean, minimal UI.",
+    description:
+      "A real-time weather application providing accurate forecasts and location-based updates with a clean, minimal UI.",
     image: "/images/projects/project6.png",
     category: "Web Apps",
     technologies: ["React", "Weather API", "Tailwind CSS"],
@@ -98,7 +102,8 @@ const projects = [
     title: "Real-Time Chat App",
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
-    description: "A real-time messaging application enabling instant communication between users with live messaging, notifications, and secure authentication.",
+    description:
+      "A real-time messaging application enabling instant communication between users with live messaging, notifications, and secure authentication.",
     image: "/images/projects/project4.png",
     category: "Full Stack",
     technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
@@ -115,7 +120,7 @@ const filterTags = [
   { id: "Full Stack", label: "Full Stack", icon: Zap },
 ];
 
-
+const GAP = 24; // px gap between cards
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("all");
@@ -123,10 +128,7 @@ export default function ProjectsSection() {
   const [perView, setPerView] = useState(3);
 
   const visible = useMemo(
-    () =>
-      filter === "all"
-        ? projects
-        : projects.filter((p) => p.category === filter),
+    () => filter === "all" ? projects : projects.filter((p) => p.category === filter),
     [filter]
   );
 
@@ -145,6 +147,11 @@ export default function ProjectsSection() {
   const totalPages = Math.max(1, Math.ceil(visible.length / perView));
   const goTo = (p) => setPage(Math.min(Math.max(0, p), totalPages - 1));
 
+  // Each card width as a fraction of the container, accounting for gaps
+  const cardWidthPct = 100 / perView;
+  // How many px gaps are in one "page" of cards
+  const gapOffset = (GAP * (perView - 1)) / perView;
+
   return (
     <section
       id="projects"
@@ -154,6 +161,7 @@ export default function ProjectsSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
+        {/* Header */}
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
@@ -169,7 +177,7 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
- 
+        {/* Filter tabs */}
         <ScrollReveal delayMs={80}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {filterTags.map(({ id, label, icon: Icon }) => {
@@ -184,16 +192,15 @@ export default function ProjectsSection() {
                     borderColor: active ? "rgba(74,222,128,0.6)" : "rgba(255,255,255,0.12)",
                     background: active ? "rgba(74,222,128,0.12)" : "rgba(255,255,255,0.04)",
                     color: active ? "#4ade80" : "#a1a1aa",
-                    boxShadow: active ? "0 0 16px rgba(74,222,128,0.25)" : "none",
+                    boxShadow: active ? "0 0 18px rgba(74,222,128,0.3)" : "none",
                   }}
                 >
                   <Icon className="h-4 w-4" />
                   {label}
-                  
                   {active && (
                     <span
                       className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-accent"
-                      style={{ boxShadow: "0 0 6px 2px rgba(74,222,128,0.6)" }}
+                      style={{ boxShadow: "0 0 6px 2px rgba(74,222,128,0.7)" }}
                     />
                   )}
                 </button>
@@ -202,41 +209,46 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-       
+        {/* Carousel */}
         <div className="relative mt-14">
 
-        
+          {/* Prev */}
           <button
             type="button"
             onClick={() => goTo(page - 1)}
             disabled={page === 0}
-            className="absolute -left-5 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
+            className="absolute -left-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
 
- 
+          {/* Next */}
           <button
             type="button"
             onClick={() => goTo(page + 1)}
             disabled={page >= totalPages - 1}
-            className="absolute -right-5 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
+            className="absolute -right-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
 
+          {/* Track */}
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-in-out gap-6"
+              className="flex transition-transform duration-500 ease-in-out"
               style={{
-                transform: `translateX(calc(-${page * (100 / perView)}% - ${page * (24 / perView)}px))`,
+                gap: GAP,
+                // Move by exactly one "page" = perView cards + their gaps
+                transform: `translateX(calc(-${page * cardWidthPct}% - ${page * GAP}px))`,
               }}
             >
               {visible.map((project) => (
                 <div
                   key={project.id}
                   className="shrink-0"
-                  style={{ width: `calc(${100 / perView}% - ${(24 * (perView - 1)) / perView}px)` }}
+                  style={{
+                    width: `calc(${cardWidthPct}% - ${gapOffset}px)`,
+                  }}
                 >
                   <ProjectCard project={project} />
                 </div>
@@ -244,7 +256,7 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-    
+          {/* Dots */}
           <div className="mt-10 flex items-center justify-center gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
