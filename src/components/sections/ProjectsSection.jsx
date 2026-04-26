@@ -134,7 +134,7 @@ export default function ProjectsSection() {
     [filter]
   );
 
-  // Measure actual card width from the DOM so translateX is pixel-perfect
+ 
   useEffect(() => {
     const measure = () => {
       if (!trackRef.current) return;
@@ -142,7 +142,7 @@ export default function ProjectsSection() {
       const w = window.innerWidth;
       const pv = w < 640 ? 1 : w < 1024 ? 2 : 3;
       setPerView(pv);
-      // card width = (container - gaps between cards) / perView
+   
       setCardWidth((containerW - GAP * (pv - 1)) / pv);
     };
     measure();
@@ -152,11 +152,10 @@ export default function ProjectsSection() {
 
   useEffect(() => { setPage(0); }, [filter]);
 
-  const totalPages = Math.max(1, Math.ceil(visible.length / perView));
+  const totalPages = Math.max(1, visible.length - perView + 1);
   const goTo = (p) => setPage(Math.min(Math.max(0, p), totalPages - 1));
 
-  // Slide by exactly (cardWidth + GAP) * perView pixels per page
-  const slideAmount = (cardWidth + GAP) * perView;
+  const slideAmount = cardWidth + GAP;
 
   return (
     <section
@@ -167,7 +166,7 @@ export default function ProjectsSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
+     
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
@@ -183,7 +182,7 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Filter tabs */}
+     
         <ScrollReveal delayMs={80}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {filterTags.map(({ id, label, icon: Icon }) => {
@@ -215,36 +214,35 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Carousel */}
+       
         <div className="relative mt-14">
 
-          {/* Prev */}
           <button
             type="button"
             onClick={() => goTo(page - 1)}
             disabled={page === 0}
-            className="absolute -left-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
+            className="absolute -left-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
 
-          {/* Next */}
+   
           <button
             type="button"
             onClick={() => goTo(page + 1)}
             disabled={page >= totalPages - 1}
-            className="absolute -right-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
+            className="absolute -right-6 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-zinc-300 backdrop-blur transition enabled:hover:border-accent/50 enabled:hover:text-accent disabled:opacity-30 lg:flex"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          {/* Overflow container — measured by ref */}
+     
           <div className="overflow-hidden" ref={trackRef}>
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
                 gap: GAP,
-                // Translate by exact pixel amount — no % ambiguity
+         
                 transform: `translateX(-${page * slideAmount}px)`,
               }}
             >
@@ -260,7 +258,7 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          {/* Dots */}
+        
           <div className="mt-10 flex items-center justify-center gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
