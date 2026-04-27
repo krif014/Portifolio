@@ -221,26 +221,7 @@ export default function TestimonialsSection() {
                   </div>
                   <Stars count={t.rating} className="text-[#4ade80]" />
                 </div>
-
-      
-                <div className="mt-8 flex justify-center gap-3 lg:hidden">
-                  <button
-                    type="button"
-                    onClick={prev}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-zinc-900/80 text-zinc-300"
-                    aria-label="Next"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </div>
+                
               </div>
             </ScrollReveal>
           </div>
