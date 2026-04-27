@@ -70,7 +70,7 @@ const testimonials = [
     name: "Rachel Smith",
     role: "Startup Founder",
     company: "BrightLabs",
-    image: "public/images/dev4.jpg",
+    image: "images/dev4.jpg",
     badge: { value: "100%", label: "On-Time Delivery" },
     quote: '"Working with Krif was an amazing experience from start to finish. The UI/UX quality, responsiveness, and smooth animations brought our vision to life perfectly. Every component felt polished."',
     rating: 5,
@@ -80,7 +80,7 @@ const testimonials = [
     name: "Daniel Carter",
     role: "Product Manager",
     company: "Nova Systems",
-    image: "public/images/dev22.jpeg",
+    image: "images/dev22.jpeg",
     badge: { value: "98%", label: "Client Satisfaction" },
     quote: '"Krif is a highly professional developer with exceptional technical skills. The project was delivered on time with excellent performance optimization and clean code structure. Truly outstanding."',
     rating: 5,
@@ -167,16 +167,12 @@ export default function TestimonialsSection() {
   
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
 
-     
             <ScrollReveal key={`img-${index}`} delayMs={0}>
-              <div
-                className="relative mx-auto overflow-hidden rounded-2xl lg:mx-0"
-                style={{ width: 260 }}
-              >
+              <div className="relative w-full overflow-hidden rounded-2xl lg:mx-0 lg:w-[260px] lg:flex-shrink-0 group">
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-full grayscale transition-all duration-700 hover:grayscale-0"
+                  className="w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   style={{
                     height: 340,
                     objectFit: "cover",
@@ -184,17 +180,34 @@ export default function TestimonialsSection() {
                     display: "block",
                   }}
                 />
-         
+                
                 {t.badge && (
                   <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 px-4 py-3 backdrop-blur-sm border border-white/10">
                     <p className="text-2xl font-bold text-accent leading-none">{t.badge.value}</p>
                     <p className="mt-1 text-sm font-medium text-white">{t.badge.label}</p>
                   </div>
                 )}
+
+      
+                <button
+                  type="button"
+                  onClick={prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-zinc-300 backdrop-blur-sm transition hover:border-accent/50 hover:text-accent lg:hidden"
+                  aria-label="Previous"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-zinc-300 backdrop-blur-sm transition hover:border-accent/50 hover:text-accent lg:hidden"
+                  aria-label="Next"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
               </div>
             </ScrollReveal>
 
-        
             <ScrollReveal key={`quote-${index}`} delayMs={100}>
               <div className="flex flex-1 flex-col">
                 <Quote className="h-9 w-9 text-[#4ade80]" strokeWidth={1.5} />
