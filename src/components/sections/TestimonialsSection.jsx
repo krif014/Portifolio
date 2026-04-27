@@ -168,13 +168,11 @@ export default function TestimonialsSection() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
 
             <ScrollReveal key={`img-${index}`} delayMs={0}>
-              <div
-                className="relative w-full overflow-hidden rounded-2xl lg:mx-0 lg:w-[260px] lg:flex-shrink-0"
-              >
+              <div className="relative w-full overflow-hidden rounded-2xl lg:mx-0 lg:w-[260px] lg:flex-shrink-0 group">
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-full grayscale transition-all duration-700 hover:grayscale-0"
+                  className="w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   style={{
                     height: 340,
                     objectFit: "cover",
@@ -188,6 +186,23 @@ export default function TestimonialsSection() {
                     <p className="mt-1 text-sm font-medium text-white">{t.badge.label}</p>
                   </div>
                 )}
+               
+                <button
+                  type="button"
+                  onClick={prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-zinc-300 backdrop-blur-sm transition hover:border-accent/50 hover:text-accent lg:hidden"
+                  aria-label="Previous"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-zinc-300 backdrop-blur-sm transition hover:border-accent/50 hover:text-accent lg:hidden"
+                  aria-label="Next"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
               </div>
             </ScrollReveal>
 
