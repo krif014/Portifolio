@@ -162,7 +162,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={!isFormFilled}
-                className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-900 via-emerald-700 to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-40"
+                className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-muted via-emerald-70 to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Send Message
                 <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -189,22 +189,22 @@ export default function ContactSection() {
             </p>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4">
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition cursor-pointer ">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-accent/10">
                   <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500">Email</p>
-                  <p className="text-sm font-medium text-white">Krif@timetoprogram.com</p>
+                  <p className="text-sm font-medium text-white">krif014@gmail.com</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4">
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition  cursor-pointer">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-accent/10">
                   <MapPin className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500">Location</p>
-                  <p className="text-sm font-medium text-white">San Francisco, CA</p>
+                  <p className="text-sm font-medium text-white">Kigali, RW</p>
                 </div>
               </div>
             </div>

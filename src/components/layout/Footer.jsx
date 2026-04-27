@@ -1,5 +1,5 @@
 import { Code2, Globe, Heart, Mail, MapPin } from "lucide-react";
-import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 
 const quickLinks = [
@@ -20,9 +20,15 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 text-accent">
-              <Code2 className="h-7 w-7" strokeWidth={2.25} />
-              <span className="text-2xl font-bold text-accent">Krif</span>
+            <div className="flex items-center gap-2">
+              <Code2 className="h-7 w-7 text-white strokeWidth={2.25}" />
+              <span
+                className="text-2xl font-bold tracking-tight
+              bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_50%)]
+              bg-clip-text text-transparent"
+              >
+                Krif
+              </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400">
               Crafting seamless digital experiences with modern web
@@ -30,15 +36,15 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <a
-                href="mailto:Krif@timetoprogram.com"
-                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-surface px-4 py-3 transition hover:border-accent/40 hover:shadow-glow"
+                href="mailto:krif014@gmail.com"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface px-4 py-3 transition hover:border-accent/40 hover:shadow-glow"
               >
                 <Mail className="h-5 w-5 text-accent" />
-                <span className="text-sm text-white">Krif@timetoprogram.com</span>
+                <span className="text-sm text-white">krif014@gmail.com</span>
               </a>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-surface px-4 py-3">
+              <div className="flex items-center gap-3 rounded-xl border  cursor-pointer hover:border-accent/40 hover:shadow-glow border-white/10 bg-surface px-4 py-3">
                 <MapPin className="h-5 w-5 text-accent" />
-                <span className="text-sm text-white">San Francisco, CA</span>
+                <span className="text-sm text-white">Kigali, RW</span>
               </div>
             </div>
           </div>
@@ -71,7 +77,7 @@ export default function Footer() {
                 { Icon: SiGithub, href: "#", label: "GitHub" },
                 { Icon: FaLinkedin, href: "#", label: "LinkedIn" },
                 { Icon: FaXTwitter, href: "#", label: "X" },
-                { Icon: Globe, href: "#", label: "Website" },
+                { Icon: FaInstagram, href: "#", label: "Website" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
@@ -98,7 +104,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-zinc-500 sm:flex-row">
-            <p>© {new Date().getFullYear()} Krif Johnson. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Krif. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               Built with{" "}
               <Heart className="inline h-3.5 w-3.5 animate-pulse fill-accent text-accent" />{" "}
