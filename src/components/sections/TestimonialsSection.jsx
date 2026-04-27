@@ -195,7 +195,7 @@ export default function TestimonialsSection() {
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                <div className="relative w-full overflow-hidden rounded-2xl group">
+                <div className="relative w-full overflow-hidden rounded-2xl group ">
                   <img
                     src={t.image}
                     alt={t.name}
