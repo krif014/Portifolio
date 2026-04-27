@@ -10,6 +10,7 @@ const testimonials = [
     role: "CTO",
     company: "TechStart Inc",
     image: "/images/testmonials/person1.png",
+    objectPosition: "center center",
     badge: { value: "3×", label: "Faster Delivery" },
     quote: '"Outstanding work on our React application. Krif delivered a high-performance, scalable solution that exceeded our expectations. The attention to detail and code quality was exceptional."',
     rating: 5,
@@ -20,6 +21,7 @@ const testimonials = [
     role: "Full Stack Developer",
     company: "DevCore",
     image: "/images/testmonials/person6.png",
+    objectPosition: "center top",
     badge: { value: "2×", label: "Speed Improvement" },
     quote: '"Excellent collaboration and technical expertise throughout the entire development process. Krif designed a clean and scalable architecture that made the application easier to maintain."',
     rating: 5,
@@ -30,6 +32,7 @@ const testimonials = [
     role: "UI/UX Designer",
     company: "PixelCraft",
     image: "/images/testmonials/person7.png",
+    objectPosition: "center 10%",
     badge: { value: "100%", label: "Design Accuracy" },
     quote: '"Krif has an incredible eye for detail and a strong understanding of modern UI/UX principles. The final product looked visually stunning while maintaining excellent performance across all devices."',
     rating: 5,
@@ -40,6 +43,7 @@ const testimonials = [
     role: "Tech Lead",
     company: "InnovateX",
     image: "images/dev3.jpg",
+    objectPosition: "center 20%",
     badge: { value: "40%", label: "Cost Reduction" },
     quote: '"Reliable, highly skilled, and extremely efficient under pressure. Krif delivered robust and scalable solutions even within tight deadlines while maintaining excellent code quality throughout."',
     rating: 5,
@@ -50,17 +54,18 @@ const testimonials = [
     role: "CEO",
     company: "NextGen Solutions",
     image: "/images/testmonials/person5.png",
+    objectPosition: "center top",
     badge: { value: "5★", label: "Top Rated" },
     quote: '"Krif delivered exactly what our company needed and exceeded expectations in multiple areas. The application performance, scalability, and overall user experience improved significantly."',
     rating: 5,
   },
-
   {
     id: 4,
     name: "Michael Brown",
     role: "Software Engineer",
     company: "CloudNet",
     image: "/images/testmonials/person4.png",
+    objectPosition: "center top",
     badge: { value: "50+", label: "Projects Delivered" },
     quote: '"Krif consistently delivered clean, maintainable, and scalable code throughout the project. The problem-solving ability and technical understanding were outstanding. Collaboration was smooth."',
     rating: 5,
@@ -70,7 +75,8 @@ const testimonials = [
     name: "Rachel Smith",
     role: "Startup Founder",
     company: "BrightLabs",
-    image: "images/dev4.jpg",
+    image: "public/images/dev4.jpg",
+    objectPosition: "center 10%",
     badge: { value: "100%", label: "On-Time Delivery" },
     quote: '"Working with Krif was an amazing experience from start to finish. The UI/UX quality, responsiveness, and smooth animations brought our vision to life perfectly. Every component felt polished."',
     rating: 5,
@@ -80,12 +86,12 @@ const testimonials = [
     name: "Daniel Carter",
     role: "Product Manager",
     company: "Nova Systems",
-    image: "images/dev22.jpeg",
+    image: "public/images/dev22.jpeg",
+    objectPosition: "right-center 10%",
     badge: { value: "98%", label: "Client Satisfaction" },
     quote: '"Krif is a highly professional developer with exceptional technical skills. The project was delivered on time with excellent performance optimization and clean code structure. Truly outstanding."',
     rating: 5,
   },
- 
 ];
 
 function Stars({ count }) {
@@ -195,9 +201,9 @@ export default function TestimonialsSection() {
                     alt={t.name}
                     className="w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                     style={{
-                      height: 340,
+                      height: "clamp(220px, 55vw, 340px)",
                       objectFit: "cover",
-                      objectPosition: "center top",
+                      objectPosition: t.objectPosition || "center top",
                       display: "block",
                     }}
                   />
