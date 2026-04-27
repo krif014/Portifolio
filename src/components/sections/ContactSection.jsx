@@ -1,9 +1,15 @@
 import { Mail, MapPin, MessageCircle, Send } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import ScrollReveal from "../animations/ScrollReveal";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+
+const NAME_MAX = 20;
+const EMAIL_MAX = 30;
+const MESSAGE_MAX = 250;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const socials = [
   { Icon: SiGithub, href: "#", label: "GitHub" },
@@ -14,30 +20,48 @@ const socials = [
 export default function ContactSection() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [fields, setFields] = useState({ name: "", email: "", message: "" });
+  const timerRef = useRef(null);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    const limits = { name: NAME_MAX, email: EMAIL_MAX, message: MESSAGE_MAX };
+    if (value.length > limits[name]) return;
+    setFields(prev => ({ ...prev, [name]: value }));
+  }
+
+  const isFormFilled =
+    fields.name.trim().length > 0 &&
+    fields.email.trim().length > 0 &&
+    fields.message.trim().length > 0;
 
   function handleSubmit(e) {
     e.preventDefault();
     setError("");
 
-    const fd = new FormData(e.currentTarget);
-    const name = String(fd.get("name") ?? "").trim();
-    const email = String(fd.get("email") ?? "").trim();
-    const message = String(fd.get("message") ?? "").trim();
+    const { name, email, message } = fields;
 
-    if (!name || !email || !message) {
-      setSent(false);
+    if (!name.trim() || !email.trim() || !message.trim()) {
       setError("Please fill in all fields.");
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      setError("Please enter a valid email address.");
       return;
     }
 
     setSent(true);
+
+    // Auto-dismiss after 4 seconds and reset form
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setSent(false);
+      setFields({ name: "", email: "", message: "" });
+    }, 4000);
   }
 
   return (
-    <section
-      id="contact"
-      className="relative overflow-hidden py-16 sm:py-24"
-    >
+    <section id="contact" className="relative overflow-hidden py-16 sm:py-24">
       <RadialGradientBackground position="center" className="opacity-25" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
@@ -49,8 +73,7 @@ export default function ContactSection() {
             Let&apos;s Work Together
           </h2>
           <p className="mt-3 text-sm text-zinc-400 sm:text-base">
-            Have a project in mind? Let&apos;s discuss how we can bring your
-            ideas to life.
+            Have a project in mind? Let&apos;s discuss how we can bring your ideas to life.
           </p>
         </ScrollReveal>
 
@@ -59,87 +82,110 @@ export default function ContactSection() {
             className="rounded-2xl border border-white/10 bg-surface/90 p-6 sm:p-8"
             delayMs={80}
           >
-            <form
-            id="contact-form"
-            onSubmit={handleSubmit}
-          >
-            <div className="space-y-5">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-xs font-medium uppercase tracking-wide text-zinc-500"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Your name"
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none ring-accent/0 transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-xs font-medium uppercase tracking-wide text-zinc-500"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="your.email@example.com"
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="text-xs font-medium uppercase tracking-wide text-zinc-500"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Tell me about your project..."
-                  className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
-                />
-              </div>
-            </div>
+            <form id="contact-form" onSubmit={handleSubmit} noValidate>
+              <div className="space-y-5">
+                {/* Name */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="name"
+                      className="text-xs font-medium uppercase tracking-wide text-zinc-500"
+                    >
+                      Name
+                    </label>
+                    <span className="text-xs text-zinc-600">
+                      {fields.name.length}/{NAME_MAX}
+                    </span>
+                  </div>
+                  <input
+                    id="name"
+                    name="name"
+                    value={fields.name}
+                    onChange={handleChange}
+                    maxLength={NAME_MAX}
+                    placeholder="Your name"
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none ring-accent/0 transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
+                  />
+                </div>
 
-            <button
-              type="submit"
-              className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-900 via-emerald-700 to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95"
-            >
-              Send Message
-              <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
+                {/* Email */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="email"
+                      className="text-xs font-medium uppercase tracking-wide text-zinc-500"
+                    >
+                      Email
+                    </label>
+                    <span className="text-xs text-zinc-600">
+                      {fields.email.length}/{EMAIL_MAX}
+                    </span>
+                  </div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={fields.email}
+                    onChange={handleChange}
+                    maxLength={EMAIL_MAX}
+                    placeholder="your.email@example.com"
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
+                  />
+                </div>
 
-            {sent ? (
-              <p className="mt-4 rounded-xl border border-accent/40 bg-accent/5 px-4 py-3 text-center text-sm text-accent">
-                Message sent successfully! I&apos;ll get back to you soon.
-              </p>
-            ) : null}
-            {error ? (
-              <p className="mt-4 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-center text-sm text-rose-200">
-                {error}
-              </p>
-            ) : null}
-          </form>
+                {/* Message */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="message"
+                      className="text-xs font-medium uppercase tracking-wide text-zinc-500"
+                    >
+                      Message
+                    </label>
+                    <span className="text-xs text-zinc-600">
+                      {fields.message.length}/{MESSAGE_MAX}
+                    </span>
+                  </div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={fields.message}
+                    onChange={handleChange}
+                    maxLength={MESSAGE_MAX}
+                    rows={5}
+                    placeholder="Tell me about your project..."
+                    className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-accent focus:ring-2 focus:ring-accent/30"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={!isFormFilled}
+                className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-900 via-emerald-700 to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Send Message
+                <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+
+              {sent && (
+                <p className="mt-4 rounded-xl border border-accent/40 bg-accent/5 px-4 py-3 text-center text-sm text-accent">
+                  Message sent successfully! I&apos;ll get back to you soon.
+                </p>
+              )}
+              {error && !sent && (
+                <p className="mt-4 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-center text-sm text-rose-200">
+                  {error}
+                </p>
+              )}
+            </form>
           </ScrollReveal>
 
           <ScrollReveal delayMs={140}>
             <h3 className="text-2xl font-bold text-white">Let&apos;s Connect</h3>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-              I&apos;m always open to discussing new projects, creative ideas,
-              or opportunities to be part of your vision. Feel free to reach
-              out!
+              I&apos;m always open to discussing new projects, creative ideas, or opportunities to
+              be part of your vision. Feel free to reach out!
             </p>
 
             <div className="mt-8 space-y-4">
@@ -149,9 +195,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500">Email</p>
-                  <p className="text-sm font-medium text-white">
-                    Krif@timetoprogram.com
-                  </p>
+                  <p className="text-sm font-medium text-white">Krif@timetoprogram.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4">
@@ -160,9 +204,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-500">Location</p>
-                  <p className="text-sm font-medium text-white">
-                    San Francisco, CA
-                  </p>
+                  <p className="text-sm font-medium text-white">San Francisco, CA</p>
                 </div>
               </div>
             </div>
@@ -187,34 +229,6 @@ export default function ContactSection() {
           </ScrollReveal>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 rounded-2xl border border-white/10 bg-surface/80 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-          <button
-            type="button"
-            onClick={() =>
-              document.getElementById("contact-form")?.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-900 via-emerald-700 to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-glow sm:max-w-md"
-          >
-            Send Message
-            <Send className="h-4 w-4" />
-          </button>
-          <div className="flex justify-center gap-3 sm:justify-end">
-            {socials.map(({ Icon, href, label }) => (
-              <a
-                key={`bar-${label}`}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-black/40 text-zinc-200 transition hover:scale-[1.04] hover:border-accent/50 hover:text-accent"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
