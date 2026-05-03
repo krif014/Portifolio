@@ -192,22 +192,17 @@ export default function ProjectsSection() {
                   key={id}
                   type="button"
                   onClick={() => setFilter(id)}
-                  className="relative inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition-all duration-200"
+                  className="relative inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200"
                   style={{
-                    borderColor: active ? "rgba(74,222,128,0.6)" : "rgba(255,255,255,0.12)",
-                    background: active ? "rgba(74,222,128,0.12)" : "rgba(255,255,255,0.04)",
-                    color: active ? "#4ade80" : "#a1a1aa",
-                    boxShadow: active ? "0 0 18px rgba(74,222,128,0.3)" : "none",
+                    background: active ? "rgba(20, 55, 20, 0.95)" : "rgba(255,255,255,0.06)",
+                    color: active ? "#ffffff" : "#a1a1aa",
+                    border: active ? "1px solid rgba(74,222,128,0.4)" : "1px solid rgba(255,255,255,0.1)",
+                    boxShadow: active ? "0 0 32px 10px rgba(74,222,128,0.3)" : "none",
+                    fontWeight: active ? "600" : "500",
                   }}
                 >
                   <Icon className="h-4 w-4" />
                   {label}
-                  {active && (
-                    <span
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-accent"
-                      style={{ boxShadow: "0 0 6px 2px rgba(74,222,128,0.7)" }}
-                    />
-                  )}
                 </button>
               );
             })}
@@ -246,7 +241,7 @@ export default function ProjectsSection() {
                 transform: `translateX(-${page * slideAmount}px)`,
               }}
             >
-              {visible.map((project) => (
+              {visible.map((project, i) => (
                 <div
                   key={project.id}
                   className="shrink-0"
