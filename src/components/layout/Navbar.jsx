@@ -58,7 +58,7 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
           ? "border-b border-white/10 bg-black/60 backdrop-blur-xl"
-          /* When at the top: fully transparent so the Hero blobs bleed through */
+
           : "border-b border-transparent bg-transparent"
         }`}
     >
@@ -119,14 +119,14 @@ export default function Navbar() {
       </nav>
 
       <div className="md:hidden">
-        {/* Overlay */}
+   
         <div
           className={`fixed inset-0 top-[80px] z-40 bg-black/60 backdrop-blur-sm transition ${open ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           onClick={() => setOpen(false)}
         />
 
-        {/* Dropdown */}
+     
         <div
           className={`fixed left-0 top-[80px] z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl transition-all duration-300 ${open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0 pointer-events-none"
             }`}
