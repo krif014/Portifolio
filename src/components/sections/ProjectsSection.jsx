@@ -51,7 +51,7 @@ const projects = [
     image: "/images/projects/project2.png",
     category: "UI Components",
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    metric: "Improved personal branding visibility",
+    metric: "2K+ GitHub stars",
     demoUrl: "",
     githubUrl: "",
   },
@@ -65,7 +65,7 @@ const projects = [
     image: "/images/projects/project7.png",
     category: "Full Stack",
     technologies: ["React", "Node.js", "Chart.js", "MongoDB"],
-    metric: "Improved data monitoring efficiency",
+    metric: "1K+ npm downloads",
     demoUrl: "",
     githubUrl: "",
   },
@@ -79,7 +79,7 @@ const projects = [
     image: "/images/projects/project5.png",
     category: "Full Stack",
     technologies: ["React", "Node.js", "PostgreSQL"],
-    metric: "30% productivity improvement",
+    metric: "500+ active users",
     demoUrl: "",
     githubUrl: "",
   },
@@ -93,7 +93,7 @@ const projects = [
     image: "/images/projects/project6.png",
     category: "Web Apps",
     technologies: ["React", "Weather API", "Tailwind CSS"],
-    metric: "Real-time data accuracy 95%",
+    metric: "95% accuracy rate",
     demoUrl: "",
     githubUrl: "",
   },
@@ -107,7 +107,7 @@ const projects = [
     image: "/images/projects/project4.png",
     category: "Full Stack",
     technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
-    metric: "Real-time latency under 100ms",
+    metric: "10K+ data points/day",
     demoUrl: "",
     githubUrl: "",
   },
@@ -252,7 +252,9 @@ export default function ProjectsSection() {
                   className="shrink-0"
                   style={{ width: cardWidth > 0 ? cardWidth : `calc(${100 / perView}% - ${GAP * (perView - 1) / perView}px)` }}
                 >
+                  <ScrollReveal delayMs={i % perView * 100}>
                   <ProjectCard project={project} />
+                  </ScrollReveal>
                 </div>
               ))}
             </div>
