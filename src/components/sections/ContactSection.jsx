@@ -52,7 +52,6 @@ export default function ContactSection() {
 
     setSent(true);
 
-    // Auto-dismiss after 4 seconds and reset form
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setSent(false);
@@ -78,13 +77,25 @@ export default function ContactSection() {
         </ScrollReveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-14">
+
+         
           <ScrollReveal
-            className="rounded-2xl border border-white/10 bg-surface/90 p-6 sm:p-8"
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface/90 p-6 sm:p-8"
             delayMs={80}
           >
-            <form id="contact-form" onSubmit={handleSubmit} noValidate>
+      
+            <div
+              className="pointer-events-none absolute inset-0 z-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse at top right, rgba(74,222,128,0.18) 0%, rgba(74,222,128,0.06) 35%, transparent 70%)",
+              }}
+              aria-hidden
+            />
+
+            <form id="contact-form" onSubmit={handleSubmit} noValidate className="relative z-10">
               <div className="space-y-5">
-                {/* Name */}
+               
                 <div>
                   <div className="flex items-center justify-between">
                     <label
@@ -108,7 +119,6 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <div className="flex items-center justify-between">
                     <label
@@ -133,7 +143,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Message */}
+          
                 <div>
                   <div className="flex items-center justify-between">
                     <label
@@ -181,6 +191,7 @@ export default function ContactSection() {
             </form>
           </ScrollReveal>
 
+        
           <ScrollReveal delayMs={140}>
             <h3 className="text-2xl font-bold text-white">Let&apos;s Connect</h3>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400">
@@ -189,7 +200,7 @@ export default function ContactSection() {
             </p>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition cursor-pointer ">
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition cursor-pointer">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-accent/10">
                   <Mail className="h-5 w-5 text-accent" />
                 </div>
@@ -198,7 +209,7 @@ export default function ContactSection() {
                   <p className="text-sm font-medium text-white">krif014@gmail.com</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition  cursor-pointer">
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-surface/80 px-4 py-4 hover:border-accent/50 transition cursor-pointer">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-accent/10">
                   <MapPin className="h-5 w-5 text-accent" />
                 </div>
@@ -216,20 +227,20 @@ export default function ContactSection() {
               {socials.map(({ Icon, href, label }) => (
                 <a
                   key={label}
-                  href={href}
+                  href={href}     
                   aria-label={label}
                   target="_blank"
-                  rel="noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-surface text-zinc-200 transition hover:scale-[1.04] hover:border-accent/50 hover:text-accent"
+              rel="noreferrer"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-surface text-zinc-200 transition hover:scale-[1.04] hover:border-accent/50 hover:text-accent"
                 >
-                  <Icon className="h-5 w-5" />
-                </a>
+              <Icon className="h-5 w-5" />
+            </a>
               ))}
-            </div>
-          </ScrollReveal>
         </div>
+      </ScrollReveal>
 
-      </div>
-    </section>
+    </div>
+      </div >
+    </section >
   );
 }

@@ -51,16 +51,15 @@ export default function Footer() {
           <ScrollReveal delayMs={100} y={24}>
             <div>
               <h3 className="text-sm font-semibold text-white">Quick Links</h3>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-5 space-y-3  text-zinc-400 transition">
                 {quickLinks.map(([label, id]) => (
                   <li key={id}>
                     <button
                       type="button"
                       onClick={() => scrollTo(id)}
-                      className="flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white"
+                      className="flex items-center gap-2 text-sm  hover:text-accent hover:scale-110 hover:translate-x-1 transition"
                     >
-                      <span className="text-zinc-600">•</span>
-                      {label}
+                      • {label}
                     </button>
                   </li>
                 ))}
