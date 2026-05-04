@@ -79,13 +79,13 @@ A sleek and fully responsive developer portfolio built with **React**, **Vite**,
 
 ## 💬 Testimonials Section
 
-<img src="public/testimonials.png" alt="Testimonials Preview" width="100%" />
+<img src="public/testimonial.png" alt="Testimonials Preview" width="100%" />
 
 ---
 
 ## 📩 Contact Section
 
-<img src="public/contacts.png" alt="Contact Section Preview" width="100%" />
+<img src="public/contact.png" alt="Contact Section Preview" width="100%" />
 
 ---
 
