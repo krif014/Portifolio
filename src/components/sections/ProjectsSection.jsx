@@ -7,7 +7,7 @@ import {
   Palette,
   Zap,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ScrollReveal from "../animations/ScrollReveal";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import ProjectCard from "../ui/ProjectCard";
@@ -33,7 +33,7 @@ const projects = [
     subtitle: "WEB APP",
     displayCategory: "Web Apps",
     description:
-      "An intelligent AI-powered chat assistant designed to provide instant responses and automate conversations through natural language processing.",
+      "An intelligent AI-powered chat assistant providing instant responses and automating conversations through natural language processing.",
     image: "/images/projects/project1.png",
     category: "Web Apps",
     technologies: ["React", "Node.js", "OpenAI API", "Express"],
@@ -103,7 +103,7 @@ const projects = [
     subtitle: "FULL STACK APP",
     displayCategory: "Full Stack",
     description:
-      "A real-time messaging application enabling instant communication between users with live messaging, notifications, and secure authentication.",
+      "A real-time messaging application with live messaging, notifications, and secure authentication built for speed and scalability.",
     image: "/images/projects/project4.png",
     category: "Full Stack",
     technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
@@ -120,26 +120,34 @@ const filterTags = [
   { id: "Full Stack", label: "Full Stack", icon: Zap },
 ];
 
-const GAP = 24; // px gap between cards
+const GAP = 24;
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("all");
   const [page, setPage] = useState(0);
   const [perView, setPerView] = useState(3);
+  const trackRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
 
   const visible = useMemo(
     () => filter === "all" ? projects : projects.filter((p) => p.category === filter),
     [filter]
   );
 
+  // Measure actual card width from the DOM so translateX is pixel-perfect
   useEffect(() => {
-    const calc = () => {
+    const measure = () => {
+      if (!trackRef.current) return;
+      const containerW = trackRef.current.offsetWidth;
       const w = window.innerWidth;
-      setPerView(w < 640 ? 1 : w < 1024 ? 2 : 3);
+      const pv = w < 640 ? 1 : w < 1024 ? 2 : 3;
+      setPerView(pv);
+      // card width = (container - gaps between cards) / perView
+      setCardWidth((containerW - GAP * (pv - 1)) / pv);
     };
-    calc();
-    window.addEventListener("resize", calc, { passive: true });
-    return () => window.removeEventListener("resize", calc);
+    measure();
+    window.addEventListener("resize", measure, { passive: true });
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   useEffect(() => { setPage(0); }, [filter]);
@@ -147,10 +155,8 @@ export default function ProjectsSection() {
   const totalPages = Math.max(1, Math.ceil(visible.length / perView));
   const goTo = (p) => setPage(Math.min(Math.max(0, p), totalPages - 1));
 
-  // Each card width as a fraction of the container, accounting for gaps
-  const cardWidthPct = 100 / perView;
-  // How many px gaps are in one "page" of cards
-  const gapOffset = (GAP * (perView - 1)) / perView;
+  // Slide by exactly (cardWidth + GAP) * perView pixels per page
+  const slideAmount = (cardWidth + GAP) * perView;
 
   return (
     <section
@@ -232,23 +238,21 @@ export default function ProjectsSection() {
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          {/* Track */}
-          <div className="overflow-hidden">
+          {/* Overflow container — measured by ref */}
+          <div className="overflow-hidden" ref={trackRef}>
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
                 gap: GAP,
-                // Move by exactly one "page" = perView cards + their gaps
-                transform: `translateX(calc(-${page * cardWidthPct}% - ${page * GAP}px))`,
+                // Translate by exact pixel amount — no % ambiguity
+                transform: `translateX(-${page * slideAmount}px)`,
               }}
             >
               {visible.map((project) => (
                 <div
                   key={project.id}
                   className="shrink-0"
-                  style={{
-                    width: `calc(${cardWidthPct}% - ${gapOffset}px)`,
-                  }}
+                  style={{ width: cardWidth > 0 ? cardWidth : `calc(${100 / perView}% - ${GAP * (perView - 1) / perView}px)` }}
                 >
                   <ProjectCard project={project} />
                 </div>
