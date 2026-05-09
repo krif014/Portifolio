@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="public/images/preview.png" alt="Krif Portfolio Preview" width="100%" />
+<img src="public/hero.png" alt="Krif Portfolio Preview" width="100%" />
 
 <br />
 <br />
@@ -49,49 +49,43 @@ A sleek and fully responsive developer portfolio built with **React**, **Vite**,
 
 ## 🏠 Hero Section
 
-<img src="public/images/readme/hero.png" alt="Hero Section Preview" width="100%" />
+<img src="public/hero.png" alt="Hero Section Preview" width="100%" />
 
 ---
 
 ## 👨‍💻 About Section
 
-<img src="public/images/readme/about.png" alt="About Section Preview" width="100%" />
-
----
-
-## 🛠️ Tech Stack
-
-<img src="public/images/readme/techstack.png" alt="Tech Stack Preview" width="100%" />
+<img src="public/about.png" alt="About Section Preview" width="100%" />
 
 ---
 
 ## 📊 Skills Section
 
-<img src="public/images/readme/skills.png" alt="Skills Section Preview" width="100%" />
+<img src="public/skills.png" alt="Skills Section Preview" width="100%" />
 
 ---
 
 ## 🚀 Projects Section
 
-<img src="public/images/readme/projects.png" alt="Projects Section Preview" width="100%" />
+<img src="public/projects.png" alt="Projects Section Preview" width="100%" />
 
 ---
 
 ## 🧩 Services Section
 
-<img src="public/images/readme/services.png" alt="Services Section Preview" width="100%" />
+<img src="public/services.png" alt="Services Section Preview" width="100%" />
 
 ---
 
 ## 💬 Testimonials Section
 
-<img src="public/images/readme/testimonials.png" alt="Testimonials Preview" width="100%" />
+<img src="public/testimonials.png" alt="Testimonials Preview" width="100%" />
 
 ---
 
 ## 📩 Contact Section
 
-<img src="public/images/readme/contact.png" alt="Contact Section Preview" width="100%" />
+<img src="public/contacts.png" alt="Contact Section Preview" width="100%" />
 
 ---
 
@@ -213,8 +207,11 @@ Inside tailwind.config.js:
 colors: {
   accent: "#4ade80",
 }
+
 📦 Deployment
+
 ▲ Vercel (Recommended)
+
 npm install -g vercel
 vercel
 Netlify
@@ -232,6 +229,7 @@ Add this to package.json:
 Deploy:
 
 npm run build && npm run deploy
+
 📊 Performance & Design Goals
 ⚡ Fast loading experience
 📱 Excellent mobile responsiveness
@@ -244,6 +242,7 @@ npm run build && npm run deploy
 Contributions, ideas, and feedback are welcome.
 
 # Fork the repository
+
 # Create your feature branch
 git checkout -b feature/amazing-feature
 
@@ -262,7 +261,7 @@ This project is licensed under the MIT License.
 Feel free to use this portfolio as inspiration for your own projects.
 
 🙌 Connect With Me
-<div align="center">
+
 💚 Built with passion by Krif
 
 🚀 Live Portfolio
@@ -270,4 +269,4 @@ https://devportifolio-eta.vercel.app/
 
 ⭐ If you like this project, consider giving it a star on GitHub.
 
-</div> ```
+ ```
