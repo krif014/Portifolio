@@ -28,6 +28,10 @@ A sleek, responsive, and customizable developer portfolio template built with Re
 
 </div>
 
+## 👥 Who Is This For?
+
+This template is made for developers, students, freelancers, and creatives who want a clean portfolio website without starting from zero. You can clone it, replace the content with your own information, add your projects, and deploy it easily.
+
 ---
 
 # ✨ Features
