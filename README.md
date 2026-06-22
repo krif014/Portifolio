@@ -1,4 +1,4 @@
-# 🌿 Krif — Full Stack Developer Portfolio
+# 🌿 Modern Developer Portfolio Template
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ### Modern • Responsive • Animated • Performance Focused
 
-A sleek and fully responsive developer portfolio built with **React**, **Vite**, and **Tailwind CSS**, featuring smooth animations, interactive UI components, and a modern dark aesthetic.
+A sleek, responsive, and customizable developer portfolio template built with React, Vite, and Tailwind CSS. It includes ready-made sections for hero, about, skills, projects, services, testimonials, and contact — so developers can quickly replace the content with their own data and launch a professional portfolio.
 
 <br />
 
@@ -262,7 +262,7 @@ Feel free to use this portfolio as inspiration for your own projects.
 
 🙌 Connect With Me
 
-💚 Built with passion by Krif
+💚 Built by Krif — free to customize and use for your own portfolio.
 
 🚀 Live Portfolio
 https://devportifolio-eta.vercel.app/
